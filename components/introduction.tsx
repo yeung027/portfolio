@@ -17,7 +17,7 @@ class Introduction extends Component
   render() 
   {
     return  <>
-             i am Introduction
+             i am Introduction {this.parent.state.isMobile ? 'mobile' : 'desktop'}
             </>
   }//END render
 
