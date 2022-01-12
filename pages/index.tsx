@@ -23,13 +23,11 @@ class IndexPage extends Component<WithUserAgentProps>
     this.windowResizeHandler = this.windowResizeHandler.bind(this);
     this.updateIsMobile = this.updateIsMobile.bind(this);
 
-
-    this.updateIsMobile();
   }//END constructor
 
   getIsMobile()
   {
-    
+    return this.state.isMobile;
   }
 
   updateIsMobile()
@@ -59,13 +57,13 @@ class IndexPage extends Component<WithUserAgentProps>
   componentDidMount()
   {
     window.addEventListener('resize', this.windowResizeHandler);
-
-    
+    this.updateIsMobile();
   }//END componentDidMount
 
   componentWillUnmount()
   {
     window.removeEventListener('resize', this.windowResizeHandler);
+    this.updateIsMobile();
   }//END componentWillUnmount
 
   render() 
@@ -73,8 +71,8 @@ class IndexPage extends Component<WithUserAgentProps>
     return  <>
               <Head>
                 <title>Hei Yeung:Web Developer</title>
+                <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
               </Head>
-              <>{this.state.isMobile? 'mobile' : 'desktop'}</><br/>
               <Introduction ref={this.introduction} parent={this} />
             </>
   }//END render
