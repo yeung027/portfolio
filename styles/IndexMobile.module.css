@@ -1,9 +1,14 @@
-.mobile
+.outer
 {
-  color:blue;
+  display: flex;
+  width:100%;
+  height:100%;
 }
 
-.desktop
+.container
 {
-  color:red;
+  //border:blue 3px solid;
+  display: flex;
+  width:980px;
+  justify-content: left;
 }

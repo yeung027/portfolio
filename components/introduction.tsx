@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles  } from '@material-ui/core/styles';
+import styles from '../styles/IntroductionDesktop.module.css'
+import mobileStyles from '../styles/IntroductionMobile.module.css'
 import Avatar from '@material-ui/core/Avatar';
 
 const styles = theme => ({
@@ -38,11 +40,9 @@ class Introduction extends Component
   render() 
   {
     const { classes } = this.props;
-    return  <>
+    return  <div>
               i am Introduction {this.parent.state.isMobile ? 'mobile' : 'desktop'}
-              <Avatar alt="Remy Sharp" src="faith.jpg" className={classes.large} />
-
-            </>
+            </div>
   }//END render
 
 }//END class IndexPage

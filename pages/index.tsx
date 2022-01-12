@@ -73,7 +73,12 @@ class IndexPage extends Component<WithUserAgentProps>
                 <title>Hei Yeung:Web Developer</title>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
               </Head>
-              <Introduction ref={this.introduction} parent={this} />
+              <div className={this.state.isMobile? mobileStyles.outer : styles.outer}>
+              <div className={this.state.isMobile? mobileStyles.container : styles.container}>
+                <Introduction ref={this.introduction} parent={this} />
+              </div>
+              </div>
+              
             </>
   }//END render
 

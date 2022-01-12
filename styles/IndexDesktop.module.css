@@ -1,9 +1,15 @@
-.mobile
+.outer
 {
-  color:blue;
+  display: flex;
+  width:100%;
+  height:100%;
+  justify-content: center;
 }
 
-.desktop
+.container
 {
-  color:red;
+  //border:red 3px solid;
+  display: flex;
+  width:980px;
+  justify-content: left;
 }
