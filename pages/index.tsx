@@ -1,10 +1,26 @@
 import React,{Component} from 'react';
 import { WithUserAgentProps, withUserAgent } from 'next-useragent'
+import PropTypes from 'prop-types'
+import { withStyles  } from '@material-ui/core/styles'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/IndexDesktop.module.css'
 import mobileStyles from '../styles/IndexMobile.module.css'
 import Introduction from '../components/introduction'
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import MenuIcon from '@material-ui/icons/Menu';
+
+const muistyles = theme => ({
+  root: {
+    '& > *': {
+      margin: 0,
+    },
+    position:'fixed',
+    marginLeft:-16,
+    marginTop:20,
+  },
+});
 
 class IndexPage extends Component<WithUserAgentProps> 
 {
@@ -63,6 +79,7 @@ class IndexPage extends Component<WithUserAgentProps>
 
   render() 
   {
+    const { classes } = this.props;
     return  <>
               <Head>
                 <title>Hei Yeung:Web Developer</title>
@@ -70,7 +87,13 @@ class IndexPage extends Component<WithUserAgentProps>
               </Head>
               <div className={this.state.isMobile? mobileStyles.outer : styles.outer}>
               <div className={this.state.isMobile? mobileStyles.container : styles.container}>
+                <div className={classes.root}>
+                  <IconButton color="#000" aria-label="Menu" size="medium">
+                    <MenuIcon />
+                  </IconButton>
+                </div>
                 <Introduction ref={this.introduction} parent={this} />
+                
               </div>
               </div>
               
@@ -79,4 +102,13 @@ class IndexPage extends Component<WithUserAgentProps>
 
 }//END class IndexPage
 
-export default withUserAgent(IndexPage)
+IndexPage.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withUserAgent(withStyles(muistyles)(IndexPage));
+
+
+
+
+//export default withStyles(muistyles)(Introduction);

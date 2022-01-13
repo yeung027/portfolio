@@ -13,6 +13,7 @@
   font-weight: 100;
   font-size: 23px;
   display: flex;
+  flex-direction: column;
   width:980px;
   justify-content: left;
   /*background-color:#F5E6CC;*/
