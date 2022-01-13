@@ -25,11 +25,6 @@ class IndexPage extends Component<WithUserAgentProps>
 
   }//END constructor
 
-  getIsMobile()
-  {
-    return this.state.isMobile;
-  }
-
   updateIsMobile()
   {
     if(typeof window !== "undefined")

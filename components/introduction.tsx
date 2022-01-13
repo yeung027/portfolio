@@ -5,7 +5,7 @@ import styles from '../styles/IntroductionDesktop.module.css'
 import mobileStyles from '../styles/IntroductionMobile.module.css'
 import Avatar from '@material-ui/core/Avatar';
 
-const styles = theme => ({
+const muistyles = theme => ({
   root: {
     display: 'flex',
     '& > *': {
@@ -40,8 +40,17 @@ class Introduction extends Component
   render() 
   {
     const { classes } = this.props;
-    return  <div>
-              i am Introduction {this.parent.state.isMobile ? 'mobile' : 'desktop'}
+
+    return  <div className={this.parent.state.isMobile ? mobileStyles.container : styles.container}>
+              <h1 className={this.parent.state.isMobile ? mobileStyles.title : styles.title}>
+                Hey, I’m Hei Yeung
+              </h1>
+              <h3>
+                I am a Full-stack Developer. Well-versed in back-end frameworks such as Node.js, Next.js, Express.js and Ruby on rails.
+Also I have experience in front-end frameworks such as react and jQuery.
+Now I am mainly coding in reactjs because I can coding in javascript on both font-end and back-end.
+Moreover, I have learn react native to make mobile App in both ios and android.
+              </h3>
             </div>
   }//END render
 
@@ -51,4 +60,5 @@ Introduction.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Introduction);
+export default withStyles(muistyles)(Introduction);
+

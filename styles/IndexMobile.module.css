@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@400;500;600&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;1,100&display=swap');
+
 .outer
 {
   display: flex;
@@ -8,10 +9,11 @@
 
 .container
 {
-  //border:blue 3px solid;
-  font-family: 'Noto Serif TC';
+  font-family: 'Roboto';
+  font-weight: 100;
+  font-size: 23px;
   display: flex;
   width:980px;
   justify-content: left;
-  background-color:#F5E6CC;
+  /*background-color:#F5E6CC;*/
 }
