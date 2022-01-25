@@ -1,59 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,500;1,100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&family=Roboto:wght@500&display=swap');
 
 .container
 {
-    /*border:red 3px solid;*/
-    margin-top: 20px;
-    font-family: 'Roboto';
-    display: flex;
-    flex-direction: row;
-    margin-top: 80px;
+    font-family: 'Philosopher', sans-serif;
+    margin:87px 0 0 0;
+    display: grid;
+    grid:
+        "left right" auto / 1fr;
 }
 
-.leftArea
+.item 
 {
-    margin-right: 20px;
-    /*background-color: aquamarine;*/
+    padding: 0;
 }
 
-.rightArea
+.left 
 {
-    /*background-color: red;*/
+    grid-area: left;
 }
 
-h1.title
+.right 
 {
+    grid-area: right;
+    width:271px;
+}
+h1.h11
+{
+    font-size: 33px;
+    color:#252D48;
+    font-weight: 700;
+}
+h1.h12
+{
+    font-size: 33px;
+    color:#FAA536;
+    font-weight: 700;
+}
+
+article.description
+{
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    line-height: 24px;
+    color:#798197;
     font-weight: 500;
-    font-size: 40px;
-    color: #21243d;
-    margin-top:12px;
-}
-
-.nameHighlight
-{
-    font-weight: 500;
-    font-size: 40px;
-    color: #e01e5a;
-}
-
-h3.descritpion
-{
-    font-weight:300;
-    font-size: 21px;
-    color: #21243d;
-    margin-top: 10px;
-    line-height: 29px;
-}
-
-h3.descritpion p
-{
-    padding-bottom: 7px;
-}
-
-.circleContainer
-{
-    background: lightblue;
-    border-radius: 50%;
-    width: 230px;
-    height: 230px;
+    margin: 20px 57px 0 0;
 }

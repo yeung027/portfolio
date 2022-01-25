@@ -21,6 +21,12 @@
     color:#000;
     margin: 0px;
     padding:4px 0px;
+
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
 }
 
 .item a

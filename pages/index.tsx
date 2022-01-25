@@ -3,7 +3,6 @@ import { WithUserAgentProps, withUserAgent } from 'next-useragent'
 import PropTypes from 'prop-types'
 import { withStyles  } from '@material-ui/core/styles'
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/IndexDesktop.module.css'
 import mobileStyles from '../styles/IndexMobile.module.css'
 import Introduction from '../components/introduction'
@@ -87,7 +86,7 @@ class IndexPage extends Component<WithUserAgentProps>
               <div className={this.state.isMobile? mobileStyles.outer : styles.outer}>
               <div className={this.state.isMobile? mobileStyles.container : styles.container}>
               <TopMenu ref={this.topMenuRef} parent={this} />
-                {/*<Introduction ref={this.introductionRef} parent={this} />*/}
+              <Introduction ref={this.introductionRef} parent={this} />
                 
               </div>
               </div>
