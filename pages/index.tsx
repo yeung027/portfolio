@@ -7,9 +7,7 @@ import Image from 'next/image'
 import styles from '../styles/IndexDesktop.module.css'
 import mobileStyles from '../styles/IndexMobile.module.css'
 import Introduction from '../components/introduction'
-import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
-import MenuIcon from '@material-ui/icons/Menu';
+import TopMenu from '../components/topMenu'
 
 const muistyles = theme => ({
   root: {
@@ -34,7 +32,8 @@ class IndexPage extends Component<WithUserAgentProps>
       useragent: useragent,
     }//END state
 
-    this.introduction = React.createRef();
+    this.introductionRef = React.createRef();
+    this.topMenuRef = React.createRef();
 
     this.windowResizeHandler = this.windowResizeHandler.bind(this);
     this.updateIsMobile = this.updateIsMobile.bind(this);
@@ -87,8 +86,8 @@ class IndexPage extends Component<WithUserAgentProps>
               </Head>
               <div className={this.state.isMobile? mobileStyles.outer : styles.outer}>
               <div className={this.state.isMobile? mobileStyles.container : styles.container}>
-                
-                {/*<Introduction ref={this.introduction} parent={this} />*/}
+              <TopMenu ref={this.topMenuRef} parent={this} />
+                {/*<Introduction ref={this.introductionRef} parent={this} />*/}
                 
               </div>
               </div>
