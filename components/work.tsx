@@ -45,13 +45,13 @@ class Work extends Component
                     <p className={this.parent.state.isMobile ? mobileStyles.qrP : styles.qrP}><Image src="/work/qr1.png" alt="me" width="84" height="84" /></p>
                     <div className={this.parent.state.isMobile ? mobileStyles.buttonArea : styles.buttonArea}>
                       
-                      <div className={this.parent.state.isMobile ? mobileStyles.button : styles.button}>
+                      <div className={'button'}>
                         <Link href="http://iloveh3k.com">
                           <a target="_blank">View</a>
                         </Link>
                       </div>
 
-                      <div className={this.parent.state.isMobile ? mobileStyles.button : styles.button}>
+                      <div className={'button'}>
                         <Link href="https://expo.dev/@heyhei/appbook">
                           <a target="_blank">React Native Version</a>
                         </Link>

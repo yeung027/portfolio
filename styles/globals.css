@@ -43,3 +43,30 @@ html, body
   background-image: linear-gradient(to right bottom, #DCECEF, #E0E6F6, #CDD1F5, #E4ECF6, #E7F0F2, #CDD1F5, #E0E6F6, #DCECEF);
 
 }
+
+.button
+{
+    display: inline-flex;
+    color:#fff !important;
+    background-image: -webkit-linear-gradient(top, #FDD972, #FBB432, #F8963F);
+    background-image: -moz-linear-gradient(top, #FDD972, #FBB432, #F8963F);
+    background-image: -ms-linear-gradient(top, #FDD972, #FBB432, #F8963F);
+    background-image: -o-linear-gradient(top, #FDD972, #FBB432, #F8963F);
+    background-image: linear-gradient(to bottom, #FDD972, #FBB432, #F8963F);
+    -webkit-border-radius: 10;
+    -moz-border-radius: 10;
+    border-radius: 10px;
+    font-family: 'Philosopher', sans-serif;
+    padding:4px 12px !important;
+    
+}
+
+.button a
+{
+    color:#fff !important;
+}
+
+.button a:hover
+{
+    color:#000 !important;
+}

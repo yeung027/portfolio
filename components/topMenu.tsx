@@ -38,7 +38,7 @@ class TopMenu extends Component
                 <div className={this.parent.state.isMobile ? [mobileStyles.item, mobileStyles.itemRight].join(' ') : [styles.item, styles.itemRight].join(' ')}>
                   <Link href="/">Work</Link>
                 </div>
-                <div className={this.parent.state.isMobile ? [mobileStyles.item, mobileStyles.itemRight, mobileStyles.button].join(' ') : [styles.item, styles.itemRight, styles.button].join(' ')}>
+                <div className={this.parent.state.isMobile ? [mobileStyles.item, mobileStyles.itemRight, 'button'].join(' ') : [styles.item, styles.itemRight, 'button'].join(' ')}>
                   <Link href="/">Contact</Link>
                 </div>
               </div>
