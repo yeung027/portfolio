@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;1,100&display=swap');
 
+
+
 .outer
 {
   display: flex;
   width:100%;
   height:100%;
+  justify-content: center;
 }
 
 .container
@@ -16,5 +19,8 @@
   flex-direction: column;
   width:980px;
   justify-content: left;
-  /*background-color:#F5E6CC;*/
+  border-radius: 20px;
+  margin:47px 0;
+  padding:33px 74px;
+  background:rgba(255,255,255,0.7);
 }

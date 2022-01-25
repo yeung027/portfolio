@@ -87,12 +87,8 @@ class IndexPage extends Component<WithUserAgentProps>
               </Head>
               <div className={this.state.isMobile? mobileStyles.outer : styles.outer}>
               <div className={this.state.isMobile? mobileStyles.container : styles.container}>
-                <div className={classes.root}>
-                  <IconButton color="#000" aria-label="Menu" size="medium">
-                    <MenuIcon />
-                  </IconButton>
-                </div>
-                <Introduction ref={this.introduction} parent={this} />
+                
+                {/*<Introduction ref={this.introduction} parent={this} />*/}
                 
               </div>
               </div>
