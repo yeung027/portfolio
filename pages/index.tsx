@@ -9,6 +9,7 @@ import TopMenu from '../components/topMenu'
 import Introduction from '../components/introduction'
 import Skills from '../components/skills'
 import Work from '../components/work'
+import Payment from '../components/payment'
 
 const muistyles = theme => ({
   root: {
@@ -37,6 +38,7 @@ class IndexPage extends Component<WithUserAgentProps>
     this.introductionRef = React.createRef();
     this.skillsRef = React.createRef();
     this.workRef = React.createRef();
+    this.paymentRef = React.createRef();
 
     this.windowResizeHandler = this.windowResizeHandler.bind(this);
     this.updateIsMobile = this.updateIsMobile.bind(this);
@@ -93,6 +95,7 @@ class IndexPage extends Component<WithUserAgentProps>
               <Introduction ref={this.introductionRef} parent={this} />
               <Skills ref={this.skillsRef} parent={this} />
               <Work ref={this.workRef} parent={this} />
+              <Payment ref={this.paymentRef} parent={this} />
               </div>
               </div>
               

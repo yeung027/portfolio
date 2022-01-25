@@ -59,7 +59,9 @@ class Work extends Component
                     </div>
                   </article>
                 </div>
-                <div className={this.parent.state.isMobile ? mobileStyles.right : styles.right}>2</div>
+                <div className={this.parent.state.isMobile ? mobileStyles.right : styles.right}>
+                  <Image src="/work/workpreview1.png" alt="me" width="370" height="319" />
+                </div>
               </div>
             </section>
   }//END render
