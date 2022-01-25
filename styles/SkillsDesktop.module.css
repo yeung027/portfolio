@@ -28,7 +28,7 @@ h1.h12
     flex-direction: row;
     flex-wrap: wrap;
     margin:34px 0 0 0;
-    row-gap: 26px;
+    row-gap: 10px;
 }
 
 .item
@@ -39,6 +39,11 @@ h1.h12
     min-width: 120px;
 }
 
+.itemMargin
+{
+    margin-left: 26px;
+}
+
 .icon
 {
     display: inline-flex;
@@ -47,13 +52,23 @@ h1.h12
     height: 90px;
 }
 
+.iconCenter
+{
+    align-items: center;
+}
+
 .name
 {
-    display: flex;
-    justify-content: center;
+    display: block;
+    text-align: center;
     font-family: 'Roboto', sans-serif;
     font-size: 15px;
     font-weight: 500;
     color:#798197;
     padding-top: 7px;
+}
+
+.name p
+{
+    line-height: 16px;
 }
