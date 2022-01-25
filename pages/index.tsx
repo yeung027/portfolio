@@ -8,6 +8,7 @@ import mobileStyles from '../styles/IndexMobile.module.css'
 import TopMenu from '../components/topMenu'
 import Introduction from '../components/introduction'
 import Skills from '../components/skills'
+import Work from '../components/work'
 
 const muistyles = theme => ({
   root: {
@@ -35,6 +36,7 @@ class IndexPage extends Component<WithUserAgentProps>
     this.topMenuRef = React.createRef();
     this.introductionRef = React.createRef();
     this.skillsRef = React.createRef();
+    this.workRef = React.createRef();
 
     this.windowResizeHandler = this.windowResizeHandler.bind(this);
     this.updateIsMobile = this.updateIsMobile.bind(this);
@@ -90,6 +92,7 @@ class IndexPage extends Component<WithUserAgentProps>
               <TopMenu ref={this.topMenuRef} parent={this} />
               <Introduction ref={this.introductionRef} parent={this} />
               <Skills ref={this.skillsRef} parent={this} />
+              <Work ref={this.workRef} parent={this} />
               </div>
               </div>
               

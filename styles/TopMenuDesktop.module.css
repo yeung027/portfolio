@@ -46,6 +46,7 @@
 
 .button
 {
+    display: inline-flex;
     color:#fff;
     background-image: -webkit-linear-gradient(top, #FDD972, #FBB432, #F8963F);
     background-image: -moz-linear-gradient(top, #FDD972, #FBB432, #F8963F);
