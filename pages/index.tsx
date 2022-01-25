@@ -5,8 +5,9 @@ import { withStyles  } from '@material-ui/core/styles'
 import Head from 'next/head'
 import styles from '../styles/IndexDesktop.module.css'
 import mobileStyles from '../styles/IndexMobile.module.css'
-import Introduction from '../components/introduction'
 import TopMenu from '../components/topMenu'
+import Introduction from '../components/introduction'
+import Skills from '../components/skills'
 
 const muistyles = theme => ({
   root: {
@@ -31,8 +32,9 @@ class IndexPage extends Component<WithUserAgentProps>
       useragent: useragent,
     }//END state
 
-    this.introductionRef = React.createRef();
     this.topMenuRef = React.createRef();
+    this.introductionRef = React.createRef();
+    this.skillsRef = React.createRef();
 
     this.windowResizeHandler = this.windowResizeHandler.bind(this);
     this.updateIsMobile = this.updateIsMobile.bind(this);
@@ -87,7 +89,7 @@ class IndexPage extends Component<WithUserAgentProps>
               <div className={this.state.isMobile? mobileStyles.container : styles.container}>
               <TopMenu ref={this.topMenuRef} parent={this} />
               <Introduction ref={this.introductionRef} parent={this} />
-                
+              <Skills ref={this.skillsRef} parent={this} />
               </div>
               </div>
               

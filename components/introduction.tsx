@@ -19,7 +19,7 @@ class Introduction extends Component
 
   render() 
   {
-    return  <div className={this.parent.state.isMobile ? mobileStyles.container : styles.container}>
+    return  <section className={this.parent.state.isMobile ? mobileStyles.container : styles.container}>
               <div className={this.parent.state.isMobile ? [mobileStyles.item, mobileStyles.left].join(' ') : [styles.item, styles.left].join(' ')}>
                 <h1 className={this.parent.state.isMobile ? mobileStyles.h11 : styles.h11}>Hey! I'm</h1>
                 <h1 className={this.parent.state.isMobile ? mobileStyles.h12 : styles.h12}>Hei Yeung</h1>
@@ -41,7 +41,7 @@ class Introduction extends Component
               <div className={this.parent.state.isMobile ? [mobileStyles.item, mobileStyles.right].join(' ') : [styles.item, styles.right].join(' ')}>
                 <Image src="/introAvatar.png" alt="me" width="271" height="271" />
               </div>
-            </div>
+            </section>
   }//END render
 
 }//END class IndexPage
