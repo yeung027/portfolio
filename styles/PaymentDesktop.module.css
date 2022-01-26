@@ -27,31 +27,6 @@ h1.h12
     font-weight: 700;
 }
 
-.item
-{
-    display: grid;
-    grid:
-        "left right" auto / 1fr;
-}
-
-.left 
-{
-    grid-area: left;
-}
-
-.right 
-{
-    grid-area: right;
-    width:508px;
-}
-
-.workname
-{
-    color:#333;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-}
 
 article.description
 {
@@ -60,56 +35,5 @@ article.description
     line-height: 24px;
     color:#798197;
     font-weight: 500;
-    margin: 14px 0 0 0;
-}
-
-.linkP a
-{
-    color:#6198F9;
-}
-
-.linkP a:hover
-{
-    color:#FBB432;
-    text-decoration: underline;
-}
-
-.qrP
-{
-    margin: 13px 0 0 0;
-}
-
-.buttonArea
-{
-    margin:18px 0 0 0;
-    display: flex;
-    flex-direction: row;
-    column-gap: 14px;
-}
-
-.button
-{
-    display: inline-flex;
-    color:#fff;
-    background-image: -webkit-linear-gradient(top, #FDD972, #FBB432, #F8963F);
-    background-image: -moz-linear-gradient(top, #FDD972, #FBB432, #F8963F);
-    background-image: -ms-linear-gradient(top, #FDD972, #FBB432, #F8963F);
-    background-image: -o-linear-gradient(top, #FDD972, #FBB432, #F8963F);
-    background-image: linear-gradient(to bottom, #FDD972, #FBB432, #F8963F);
-    -webkit-border-radius: 10;
-    -moz-border-radius: 10;
-    border-radius: 10px;
-    font-family: 'Philosopher', sans-serif;
-    padding:4px 12px;
-    
-}
-
-.button a
-{
-    color:#fff;
-}
-
-.button a:hover
-{
-    color:#000;
+    margin: 0 0 0 0;
 }

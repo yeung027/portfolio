@@ -25,7 +25,11 @@ class Payment extends Component
                 <h1 className={this.parent.state.isMobile ? mobileStyles.h11 : styles.h11}>Payment API</h1>
                 <h1 className={this.parent.state.isMobile ? mobileStyles.h12 : styles.h12}>Ecommerce Website</h1>
               </div>
-
+              <article className={this.parent.state.isMobile ? mobileStyles.description : styles.description}>
+                <p>
+                I can make a website with payment gateway, so visitor can shop and pay online.
+                </p>
+                </article>
              
             </section>
   }//END render
