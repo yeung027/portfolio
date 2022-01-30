@@ -1,9 +1,15 @@
 import React,{Component} from 'react';
+import dynamic from 'next/dynamic'
 import { WithUserAgentProps, withUserAgent } from 'next-useragent'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
 import styles from '../styles/index/desktop.module.css'
 import mobileStyles from '../styles/index/mobile.module.css'
+
+const Ninja = dynamic(() => import('@/components/canvas/Ninja'), {
+  ssr: false,
+})
+
 
 let minDesktopWindowWidth: number;
 minDesktopWindowWidth = 980;
@@ -89,11 +95,10 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
     return  <>
               <Head>
                 <title>Hei Yeung:Web Developer</title>
-                <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
               </Head>
               <div className={this.state.isMobile? mobileStyles.outer : styles.outer}>
               <div className={this.state.isMobile? mobileStyles.container : styles.container}>
-
+                <Ninja />
               </div>
               </div>
               
