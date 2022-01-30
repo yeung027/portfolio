@@ -81,3 +81,5 @@ module.exports = plugins(
   ],
   nextConfig
 )
+
+process.env.minDesktopWindowWidth = 980
