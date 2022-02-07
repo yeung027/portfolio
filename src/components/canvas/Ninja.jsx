@@ -1,8 +1,8 @@
 import React, { Suspense, Component } from 'react'
-import { Canvas, useLoader } from '@react-three/fiber'
+import { Canvas, useLoader, useFrame } from '@react-three/fiber'
 import { PerspectiveCamera, Preload } from '@react-three/drei'
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { Vector3, MeshStandardMaterial } from 'three';
+import { Vector3, MeshStandardMaterial, AnimationMixer } from 'three';
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 
 const retryInterval = 23;
@@ -70,9 +70,13 @@ class Model extends Component
       
     this.isMaterialApplied = false;
       
-    this.sendMaterial = this.sendMaterial.bind(this);
-    this.applyMaterial = this.applyMaterial.bind(this);
+    this.sendMaterial         = this.sendMaterial.bind(this);
+    this.applyMaterial        = this.applyMaterial.bind(this);
     this.applyMaterialToModel = this.applyMaterialToModel.bind(this);
+    this.setMixer             = this.setMixer.bind(this);
+    this.retrySetMixer        = this.retrySetMixer.bind(this);
+    this.playAnim             = this.playAnim.bind(this);
+    
   }//END constructor
     
   sendMaterial(material)
@@ -122,13 +126,79 @@ class Model extends Component
     return true;
     console.log('finally.....');
   }//END applyMaterialToModel
-    
+  
+  setMixer()
+  {
+    if (gltf === null || !gltf.scene)
+    {
+      this.retrySetMixer();
+      return false;
+    }
+
+    let mixer = new AnimationMixer(gltf.scene);
+    this.setState({ mixer: mixer });
+    //console.log('mixer setted: '+mixer);
+    return true;
+  }//END setMixer
+
+  retrySetMixer()
+  {
+    console.log('gltf not loaded yet, retry set mixer is pending...');
+    setTimeout(
+      function () {
+      
+        this.setMixer();
+      }
+      .bind(this),
+      retryInterval
+    );
+  }//END retrySetMixer
+
+  componentDidMount()
+  {
+    this.setMixer();
+    this.playAnim();
+  }//END componentDidMount
+
+
+  playAnim()
+  {
+    //console.log('playAnim');
+    if (this.state.mixer != null)
+    {
+
+      this.state.mixer.clipAction(gltf.animations[1]).play();
+    }
+    else
+    {
+      this.setMixer();
+      setTimeout(
+        function () {
+
+          this.playAnim();
+        }
+          .bind(this),
+        retryInterval
+      );
+    }
+
+
+  }//END playAnim
+
+
   render()
   {
+      let useFrameLogicDOM = null
+      if (this.state.mixer != null) 
+      {
+        useFrameLogicDOM = <><UseFrameLogic parent={this} mixer={this.state.mixer} /></>
+      }//END if
+
       return (
           <Suspense fallback={<>Loading...</>} r3f>
             <Texture parent={this} />
             <Asset url="/ninja/ninja.gltf" />
+            {useFrameLogicDOM}
           </Suspense>
       )
   }//END render
@@ -164,5 +234,13 @@ function Texture(props)
   }//END if (!loaded)
   
 
-  return <></>
+  return null
 }//END Texture
+
+function UseFrameLogic(props)
+{
+  useFrame((state, delta) => {
+    props.mixer?.update(delta)
+  })
+  return null;
+}//END UseFrameLogic
