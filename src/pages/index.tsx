@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import Head from 'next/head'
 import styles from '../styles/index/desktop.module.css'
 import mobileStyles from '../styles/index/mobile.module.css'
+import Introduction from '../components/introduction'
 
 const Ninja = dynamic(() => import('@/components/canvas/Ninja'), {
   ssr: false,
@@ -40,7 +41,8 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
       isMobile: ua.isMobile,
       useragent: useragent,
     }//END state
-
+    
+    this.introductionRef = React.createRef();
 
     this.windowResizeHandler = this.windowResizeHandler.bind(this);
     this.updateIsMobile = this.updateIsMobile.bind(this);
@@ -98,7 +100,8 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
               </Head>
               <div className={this.state.isMobile? mobileStyles.outer : styles.outer}>
               <div className={this.state.isMobile? mobileStyles.container : styles.container}>
-                <Ninja />
+                {/*<Ninja />*/}
+                <Introduction ref={this.introductionRef} parent={this} />
               </div>
               </div>
               
