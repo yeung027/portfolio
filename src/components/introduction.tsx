@@ -3,10 +3,21 @@ import styles from '../styles/introduction/desktop.module.css'
 import mobileStyles from '../styles/introduction/mobile.module.css'
 import Image from 'next/image'
 
+type MyProps = {
+  parent:any
+};
 
-class Introduction extends Component
+type MyStates = {
+  
+};
+
+interface Introduction {
+  parent: any
+}
+
+class Introduction extends Component<MyProps, MyStates> 
 {
-  constructor(props)
+  constructor(props:MyProps)
   {
     super(props);
     this.parent = props.parent;
@@ -14,7 +25,6 @@ class Introduction extends Component
     this.state = {
       
     }//END state
-    
   }//END constructor
 
 
@@ -22,7 +32,7 @@ class Introduction extends Component
   {
     return  <section className={this.parent.state.isMobile ? mobileStyles.container : styles.container}>
               <div className={this.parent.state.isMobile ? [mobileStyles.item, mobileStyles.left].join(' ') : [styles.item, styles.left].join(' ')}>
-                <h1 className={this.parent.state.isMobile ? mobileStyles.h11 : styles.h11}>Hey! I'm</h1>
+                <h1 className={this.parent.state.isMobile ? mobileStyles.h11 : styles.h11}>Hey! I&#39;m</h1>
                 <h1 className={this.parent.state.isMobile ? mobileStyles.h12 : styles.h12}>Hei Yeung</h1>
                 <article className={this.parent.state.isMobile ? mobileStyles.description : styles.description}>
                 <p>
