@@ -1,5 +1,4 @@
 import React,{Component} from 'react';
-import dynamic from 'next/dynamic'
 import { WithUserAgentProps, withUserAgent } from 'next-useragent'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
@@ -7,10 +6,7 @@ import styles from '../styles/index/desktop.module.css'
 import mobileStyles from '../styles/index/mobile.module.css'
 import Introduction from '../components/introduction'
 import TopMenu from '../components/topMenu'
-
-const Ninja = dynamic(() => import('@/components/canvas/Ninja'), {
-  ssr: false,
-})
+import Skills from '../components/skills'
 
 
 let minDesktopWindowWidth: number;
@@ -31,6 +27,7 @@ type MyStates = {
 interface IndexPage {
   topMenuRef: any
   introductionRef: any
+  skillsRef: any
 }
 
 class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates> 
@@ -49,6 +46,7 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
 
     this.topMenuRef = React.createRef();
     this.introductionRef = React.createRef();
+    this.skillsRef = React.createRef();
 
     this.windowResizeHandler = this.windowResizeHandler.bind(this);
     this.updateIsMobile = this.updateIsMobile.bind(this);
@@ -109,6 +107,7 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
                 {/*<Ninja />*/}
                 <TopMenu ref={this.topMenuRef} parent={this} />
                 <Introduction ref={this.introductionRef} parent={this} />
+                <Skills ref={this.skillsRef} parent={this} />
               </div>
               </div>
               

@@ -1,7 +1,12 @@
 import React,{Component} from 'react';
+import dynamic from 'next/dynamic'
 import styles from '../styles/introduction/desktop.module.css'
 import mobileStyles from '../styles/introduction/mobile.module.css'
 import Image from 'next/image'
+
+const Ninja = dynamic(() => import('@/components/canvas/Ninja'), {
+  ssr: false,
+})
 
 type MyProps = {
   parent:any
@@ -15,7 +20,7 @@ interface Introduction {
   parent: any
 }
 
-class Introduction extends Component<MyProps, MyStates> 
+class Introduction extends Component<MyProps, MyStates>
 {
   constructor(props:MyProps)
   {
@@ -50,7 +55,7 @@ class Introduction extends Component<MyProps, MyStates>
                 </article>
               </div>
               <div className={this.parent.state.isMobile ? [mobileStyles.item, mobileStyles.right].join(' ') : [styles.item, styles.right].join(' ')}>
-                <Image src="/introAvatar.png" alt="me" width="271" height="271" />
+                <Ninja parent={this} />
               </div>
             </section>
   }//END render

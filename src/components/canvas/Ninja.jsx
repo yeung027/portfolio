@@ -4,23 +4,27 @@ import { PerspectiveCamera, Preload } from '@react-three/drei'
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Vector3, MeshStandardMaterial, AnimationMixer } from 'three';
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
+import styles from '../../styles/canvas/ninja/desktop.module.css'
+import mobileStyles from '../../styles/canvas/ninja/mobile.module.css'
 
 const retryInterval = 23;
 let gltf  = null;
 
-const R3F = ({ children }) => {
-    const cameraPosition   = new Vector3(0, -4.5, 3);
-    
+const R3F = (props) => {
+    //const cameraPosition   = new Vector3(0, -4.5, 3);
+    let parent = props.parent;
+    //console.log('ninja parent3 : '+parent)
+
     return (
       <Canvas
               mode='concurrent'
-              style={{ background: 'blue', width: '300px', height: '300px', clipPath: 'circle(50% at 50% 50%)' }}
+              className={parent.isMobile ? mobileStyles.canvas : styles.canvas}
       >
               <Preload all />
               <ambientLight intensity={0.3} />
               <pointLight position={[35, 43, 30]} intensity={0.5} />
               <PerspectiveCamera makeDefault far={100} near={0.1} fov={40} position={[0, -4.5, 3]} />
-              {children}
+              {props.children}
       </Canvas>
     )
 }//END R3F
@@ -30,8 +34,8 @@ export default class Ninja extends Component
   constructor(props)
   {
     super(props);
-
-
+    this.parent = props.parent;
+    //console.log('ninja parent : '+this.parent)
     
   }//END constructor
   
@@ -41,8 +45,8 @@ export default class Ninja extends Component
     
     return (
         <>
-          <R3F r3f>
-            <Model />
+          <R3F r3f parent={this}>
+            <Model parent={this} />
           </R3F>
         </>
     )
@@ -62,7 +66,9 @@ class Model extends Component
   constructor(props)
   {
     super(props);
-      
+
+    this.parent = props.parent;
+    //console.log('ninja parent22 : '+this.parent)
     this.state = {
       mixer: null,
       animationPlaying: false

@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&family=Roboto:wght@500&display=swap');
+
+.container
+{
+    font-family: 'Philosopher', sans-serif;
+    margin:87px 0 0 0;
+    display: flex;
+    flex-direction: column;
+}
+
+h1.h11
+{
+    font-size: 33px;
+    color:#252D48;
+    font-weight: 700;
+}
+
+h1.h12
+{
+    font-size: 33px;
+    color:#FAA536;
+    font-weight: 700;
+}
+
+.skillsList
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin:34px 0 0 0;
+    row-gap: 10px;
+}
+
+.item
+{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    min-width: 120px;
+}
+
+.itemMargin
+{
+    margin-left: 26px;
+}
+
+.icon
+{
+    display: inline-flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 90px;
+}
+
+.iconCenter
+{
+    align-items: center;
+}
+
+.name
+{
+    display: block;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color:#798197;
+    padding-top: 7px;
+}
+
+.name p
+{
+    line-height: 16px;
+}
