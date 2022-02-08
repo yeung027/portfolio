@@ -8,6 +8,7 @@ import TopMenu from '../components/topMenu'
 import Skills from '../components/skills'
 import Work from '../components/work'
 import Payment from '../components/payment'
+import Contact from '../components/contact'
 
 let minDesktopWindowWidth: number;
 minDesktopWindowWidth = 980;
@@ -30,6 +31,7 @@ interface IndexPage {
   skillsRef: any
   workRef: any
   paymentRef: any
+  contactRef: any
 }
 
 class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates> 
@@ -51,6 +53,7 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
     this.skillsRef = React.createRef();
     this.workRef = React.createRef();
     this.paymentRef = React.createRef();
+    this.contactRef = React.createRef();
 
     this.windowResizeHandler = this.windowResizeHandler.bind(this);
     this.updateIsMobile = this.updateIsMobile.bind(this);
@@ -113,6 +116,7 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
                 <Skills ref={this.skillsRef} parent={this} />
                 <Work ref={this.workRef} parent={this} />
                 <Payment ref={this.paymentRef} parent={this} />
+                <Contact ref={this.contactRef} parent={this} />
               </div>
               </div>
               
