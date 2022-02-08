@@ -1,13 +1,13 @@
 import React,{Component} from 'react';
 import { WithUserAgentProps, withUserAgent } from 'next-useragent'
-import PropTypes from 'prop-types'
 import Head from 'next/head'
 import styles from '../styles/index/desktop.module.css'
 import mobileStyles from '../styles/index/mobile.module.css'
 import Introduction from '../components/introduction'
 import TopMenu from '../components/topMenu'
 import Skills from '../components/skills'
-
+import Work from '../components/work'
+import Payment from '../components/payment'
 
 let minDesktopWindowWidth: number;
 minDesktopWindowWidth = 980;
@@ -28,6 +28,8 @@ interface IndexPage {
   topMenuRef: any
   introductionRef: any
   skillsRef: any
+  workRef: any
+  paymentRef: any
 }
 
 class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates> 
@@ -47,6 +49,8 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
     this.topMenuRef = React.createRef();
     this.introductionRef = React.createRef();
     this.skillsRef = React.createRef();
+    this.workRef = React.createRef();
+    this.paymentRef = React.createRef();
 
     this.windowResizeHandler = this.windowResizeHandler.bind(this);
     this.updateIsMobile = this.updateIsMobile.bind(this);
@@ -104,10 +108,11 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
               </Head>
               <div className={this.state.isMobile? mobileStyles.outer : styles.outer}>
               <div className={this.state.isMobile? mobileStyles.container : styles.container}>
-                {/*<Ninja />*/}
                 <TopMenu ref={this.topMenuRef} parent={this} />
                 <Introduction ref={this.introductionRef} parent={this} />
                 <Skills ref={this.skillsRef} parent={this} />
+                <Work ref={this.workRef} parent={this} />
+                <Payment ref={this.paymentRef} parent={this} />
               </div>
               </div>
               

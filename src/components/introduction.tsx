@@ -2,7 +2,6 @@ import React,{Component} from 'react';
 import dynamic from 'next/dynamic'
 import styles from '../styles/introduction/desktop.module.css'
 import mobileStyles from '../styles/introduction/mobile.module.css'
-import Image from 'next/image'
 
 const Ninja = dynamic(() => import('@/components/canvas/Ninja'), {
   ssr: false,

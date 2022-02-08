@@ -16,7 +16,7 @@ interface TopMenu {
   parent: any
 }
 
-class TopMenu extends Component<MyProps, MyStates> 
+class TopMenu extends Component<MyProps, MyStates>
 {
   constructor(props)
   {
