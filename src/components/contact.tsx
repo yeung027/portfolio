@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import styles from '../styles/contact/desktop.module.css'
 import mobileStyles from '../styles/contact/mobile.module.css'
 import Image from 'next/image'
+import Link from 'next/link'
 
 type MyProps = {
   parent:any
@@ -46,8 +47,24 @@ class Contact extends Component<MyProps, MyStates>
                   </div>
                   <div className={this.parent.state.isMobile ? mobileStyles.row1Right : styles.row1Right}>
                     <div className={this.parent.state.isMobile ? mobileStyles.ninjaDialog : styles.ninjaDialog}>
-                    <div className={this.parent.state.isMobile ? mobileStyles.ninjaDialogPointer : styles.ninjaDialogPointer}>
-                    </div>
+                      <div className={this.parent.state.isMobile ? mobileStyles.ninjaDialogPointer : styles.ninjaDialogPointer}>
+                      </div>
+                      <article className={this.parent.state.isMobile ? mobileStyles.dialogContent : styles.dialogContent}>
+                        <p>
+                          Send me a mail: 
+                          <span className={this.parent.state.isMobile ? mobileStyles.emailLink : styles.emailLink}>
+                            <Link href="mailto:shinghei.yeung@gmail.com">
+                              <a target="_blank">
+                              shinghei.yeung@gmail.com
+                              </a>
+                            </Link>
+                          </span>
+                        </p>
+                        <p className={this.parent.state.isMobile ? mobileStyles.orP : styles.orP}>OR</p>
+                        <p className={this.parent.state.isMobile ? mobileStyles.p2 : styles.p2}>
+                          Fill in your info in the form below and I look forward to hearing from you!
+                        </p>
+                      </article>
                     </div>
                   </div>
                 </div>

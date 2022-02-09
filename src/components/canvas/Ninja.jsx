@@ -36,17 +36,35 @@ export default class Ninja extends Component
     super(props);
     this.parent = props.parent;
     //console.log('ninja parent : '+this.parent)
-    
+    this.playNinjaAnim = this.playNinjaAnim.bind(this);
+
+    this.modelRef = React.createRef();
   }//END constructor
   
-    
+
+  playNinjaAnim()
+  {
+    //console.log('playNinjaAnim....ninja!');
+    if(this.modelRef && this.modelRef.current)
+    {
+      this.modelRef.current.playAnim();
+    }
+  }
+
+  componentDidMount()
+  {
+    const that = this;
+
+    window.addEventListener("scroll", function(e) { that.playNinjaAnim() }); 
+  }//END componentDidMount
+
   render()
   {
     
     return (
         <>
           <R3F r3f parent={this}>
-            <Model parent={this} />
+            <Model parent={this} ref={this.modelRef} />
           </R3F>
         </>
     )
@@ -163,7 +181,7 @@ class Model extends Component
   componentDidMount()
   {
     this.setMixer();
-    this.playAnim();
+    //this.playAnim();
   }//END componentDidMount
 
 

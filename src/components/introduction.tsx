@@ -7,6 +7,7 @@ const Ninja = dynamic(() => import('@/components/canvas/Ninja'), {
   ssr: false,
 })
 
+
 type MyProps = {
   parent:any
 };
@@ -17,6 +18,7 @@ type MyStates = {
 
 interface Introduction {
   parent: any
+  ninjaRef: any
 }
 
 class Introduction extends Component<MyProps, MyStates>
@@ -29,7 +31,11 @@ class Introduction extends Component<MyProps, MyStates>
     this.state = {
       
     }//END state
+    
+    this.ninjaRef = React.createRef();
+
   }//END constructor
+  
 
 
   render() 
@@ -54,7 +60,7 @@ class Introduction extends Component<MyProps, MyStates>
                 </article>
               </div>
               <div className={this.parent.state.isMobile ? [mobileStyles.item, mobileStyles.right].join(' ') : [styles.item, styles.right].join(' ')}>
-                <Ninja parent={this} />
+                <Ninja parent={this} ref={this.ninjaRef} />
               </div>
             </section>
   }//END render

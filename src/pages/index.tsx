@@ -9,6 +9,7 @@ import Skills from '../components/skills'
 import Work from '../components/work'
 import Payment from '../components/payment'
 import Contact from '../components/contact'
+import { ToonShaderHatching } from 'three-stdlib';
 
 let minDesktopWindowWidth: number;
 minDesktopWindowWidth = 980;
@@ -58,6 +59,8 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
     this.windowResizeHandler = this.windowResizeHandler.bind(this);
     this.updateIsMobile = this.updateIsMobile.bind(this);
 
+    
+
   }//END constructor
 
   updateIsMobile()
@@ -93,8 +96,10 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
 
   componentDidMount()
   {
+    const that = this;
     window.addEventListener('resize', this.windowResizeHandler);
     this.updateIsMobile();
+    
   }//END componentDidMount
 
   componentWillUnmount()
@@ -102,6 +107,9 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
     window.removeEventListener('resize', this.windowResizeHandler);
     this.updateIsMobile();
   }//END componentWillUnmount
+
+
+
 
   render() 
   {
