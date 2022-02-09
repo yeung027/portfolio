@@ -45,7 +45,10 @@ class Contact extends Component<MyProps, MyStates>
                     />
                   </div>
                   <div className={this.parent.state.isMobile ? mobileStyles.row1Right : styles.row1Right}>
-                    
+                    <div className={this.parent.state.isMobile ? mobileStyles.ninjaDialog : styles.ninjaDialog}>
+                    <div className={this.parent.state.isMobile ? mobileStyles.ninjaDialogPointer : styles.ninjaDialogPointer}>
+                    </div>
+                    </div>
                   </div>
                 </div>
                 <div className={this.parent.state.isMobile ? mobileStyles.row2 : styles.row2}>
