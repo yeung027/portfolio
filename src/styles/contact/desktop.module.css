@@ -122,14 +122,18 @@ h1.h12
 
 .row4L, .row4M, .row4R
 {
-  height: 100px;
+  
 }
 
 .row4L
 {
   width: 76px;
-  text-align: right;
+  background-repeat: repeat-y;
+  background-position: right;
+  background-image: url('/contact/l.png');
 }
+
+
 
 .row4M
 {
@@ -140,7 +144,9 @@ h1.h12
 .row4R
 {
   width: 53px;
-  text-align: left;
+  background-repeat: repeat-y;
+  background-position: left;
+  background-image: url('/contact/r.png');
 }
 
 .row5L, .row5M, .row5R
@@ -217,3 +223,59 @@ h1.h12
 {
   color: #252D48;
 }
+
+.formWrapper
+{
+  font-size: 20px;
+  padding:0 0 7px 3px;
+}
+
+.formColumnWrapper
+{
+  margin:16px 0;
+}
+
+.formColumnWrapper input[type=text], .formColumnWrapper textarea
+{
+  background-color: #ebeff2;
+  border: #E0E2E5 1px solid;
+  font-size: 20px;
+}
+
+.formColumnWrapper textarea
+{
+  min-width: 500px;
+  min-height: 120px;
+}
+
+.formColumnWrapper input[type=text]
+{
+  line-height: 20px;
+}
+
+.formColumnWrapper input[type=text]::placeholder, .formColumnWrapper textarea::placeholder
+{
+  color:#798197;
+  padding:0 5px;
+}
+
+.formColumnWrapper:after
+{
+  content: '*';
+  color:#faa536;
+  font-size: 20px;
+  line-height: 20px;
+  margin:0 3px;
+}
+
+.formColumnWrapper:not(span):after
+{
+  vertical-align:middle;
+}
+
+.formColumnWrapper:not(div):after
+{
+  vertical-align:top;
+}
+
+

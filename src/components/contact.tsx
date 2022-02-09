@@ -3,6 +3,7 @@ import styles from '../styles/contact/desktop.module.css'
 import mobileStyles from '../styles/contact/mobile.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
+import { urlObjectKeys } from 'next/dist/shared/lib/utils';
 
 type MyProps = {
   parent:any
@@ -102,7 +103,7 @@ class Contact extends Component<MyProps, MyStates>
                     />
                   </div>
                   <div className={this.parent.state.isMobile ? mobileStyles.row3M : styles.row3M}>
-                    3M
+                  
                   </div>
                   <div className={this.parent.state.isMobile ? mobileStyles.row3R : styles.row3R}>
                     <Image src="/contact/r.png"
@@ -112,20 +113,28 @@ class Contact extends Component<MyProps, MyStates>
                   </div>
                 </div>
                 <div className={this.parent.state.isMobile ? mobileStyles.row4 : styles.row4}>
-                  <div className={this.parent.state.isMobile ? mobileStyles.row4L : styles.row4L}>
-                    <Image src="/contact/l.png"
-                      width={this.parent.state.isMobile ? '53' : '53'} 
-                      height={this.parent.state.isMobile ? '100' : '100'} 
-                    />
+                  <div 
+                    className={this.parent.state.isMobile ? mobileStyles.row4L : styles.row4L}
+                  >
                   </div>
                   <div className={this.parent.state.isMobile ? mobileStyles.row4M : styles.row4M}>
-                    4M
+                    <div className={this.parent.state.isMobile ? mobileStyles.formWrapper : styles.formWrapper}>
+                      <form action="#" method="POST">
+                        <div className={this.parent.state.isMobile ? mobileStyles.formColumnWrapper : styles.formColumnWrapper}>
+                          <input id="name" type="text" autoComplete="name" placeholder='Name' required />
+                        </div>
+                        <div className={this.parent.state.isMobile ? mobileStyles.formColumnWrapper : styles.formColumnWrapper}>
+                          <input id="email" type="text" autoComplete="email" placeholder='email' required />
+                        </div>
+                        <span className={this.parent.state.isMobile ? mobileStyles.formColumnWrapper : styles.formColumnWrapper}>
+                          <textarea id="message" placeholder='Message' required />
+                        </span>
+                      </form>
+                    </div>
                   </div>
-                  <div className={this.parent.state.isMobile ? mobileStyles.row4R : styles.row4R}>
-                    <Image src="/contact/r.png"
-                      width={this.parent.state.isMobile ? '53' : '53'} 
-                      height={this.parent.state.isMobile ? '100' : '100'} 
-                    />
+                  <div 
+                    className={this.parent.state.isMobile ? mobileStyles.row4R : styles.row4R}
+                  >
                   </div>
                 </div>
                 <div className={this.parent.state.isMobile ? mobileStyles.row5 : styles.row5}>
