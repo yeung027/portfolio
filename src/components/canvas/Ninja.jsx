@@ -13,12 +13,14 @@ let gltf  = null;
 const R3F = (props) => {
     //const cameraPosition   = new Vector3(0, -4.5, 3);
     let parent = props.parent;
-    //console.log('ninja parent3 : '+parent)
-
+    //console.log('ninja parent.isMobile : '+parent.parent.parent.state.isMobile)
+    let isMobile  = false;
+    if(parent && parent.parent && parent.parent.parent)
+      isMobile = parent.parent.parent.state.isMobile;
     return (
       <Canvas
               mode='concurrent'
-              className={parent.isMobile ? mobileStyles.canvas : styles.canvas}
+              className={isMobile ? mobileStyles.canvas : styles.canvas}
       >
               <Preload all />
               <ambientLight intensity={0.3} />

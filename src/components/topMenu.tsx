@@ -36,7 +36,7 @@ class TopMenu extends Component<MyProps, MyStates>
               <div className={this.parent.state.isMobile ? mobileStyles.group : styles.group}>
                 <div className={this.parent.state.isMobile ? [mobileStyles.item].join(' ') : [styles.item].join(' ')}>Hei Yeung</div>
               </div>
-              <div className={this.parent.state.isMobile ? mobileStyles.group : styles.group}>
+              <div className={this.parent.state.isMobile ? [mobileStyles.group, mobileStyles.rightGroup].join(' ') : [styles.group, styles.rightGroup].join(' ')}>
                 <div className={this.parent.state.isMobile ? [mobileStyles.item, mobileStyles.itemRight].join(' ') : [styles.item, styles.itemRight].join(' ')}>
                   <Link href="/">Home</Link>
                 </div>
@@ -51,6 +51,11 @@ class TopMenu extends Component<MyProps, MyStates>
                 </div>
                 <div className={this.parent.state.isMobile ? [mobileStyles.item, mobileStyles.itemRight, 'button'].join(' ') : [styles.item, styles.itemRight, 'button'].join(' ')}>
                   <Link href="/">Contact</Link>
+                </div>
+                <div className={this.parent.state.isMobile ? mobileStyles.mobileMenuButton : styles.mobileMenuButton}>
+                  <div className={mobileStyles.line1}></div>
+                  <div className={mobileStyles.line2}></div>
+                  <div className={mobileStyles.line3}></div>
                 </div>
               </div>
             </div>

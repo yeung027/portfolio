@@ -27,7 +27,6 @@ class Introduction extends Component<MyProps, MyStates>
   {
     super(props);
     this.parent = props.parent;
-
     this.state = {
       
     }//END state

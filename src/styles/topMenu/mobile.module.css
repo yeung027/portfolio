@@ -1,5 +1,45 @@
 .container
 {
-    /*border:red 3px solid;*/
-    margin-top: 20px;
+    font-family: 'Philosopher', sans-serif;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.group
+{
+    
+}
+
+.rightGroup
+{
+  
+}
+
+.rightGroup .item
+{
+  display: none;
+}
+
+.mobileMenuButton
+{
+  display: flex;
+  flex-direction: column;
+  align-items:flex-end;
+  cursor: pointer;
+}
+
+.mobileMenuButton .line1, .mobileMenuButton .line2, .mobileMenuButton .line3
+{
+  width: 20px;
+  height: 3px;
+  background-color: #757575;
+  margin: 1.9px 0;
+}
+
+.mobileMenuButton .line3
+{
+  width: 23px;
+  margin-top: 2px;
 }
