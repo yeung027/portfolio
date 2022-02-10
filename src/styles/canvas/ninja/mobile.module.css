@@ -12,7 +12,7 @@
 {
   .canvas
   {
-    clip-path: circle(33% at 50% 50%)!important;
+    clip-path: circle(28% at 50% 50%)!important;
   }
 }
 
@@ -20,7 +20,7 @@
 {
   .canvas
   {
-    clip-path: circle(39% at 50% 50%)!important;
+    clip-path: circle(34% at 50% 50%)!important;
   }
 }
 
@@ -30,7 +30,7 @@
 {
   .canvas
   {
-    clip-path: circle(26% at 50% 50%)!important;
+    clip-path: circle(21% at 50% 50%)!important;
   }
 }
 
@@ -38,7 +38,7 @@
 {
   .canvas
   {
-    clip-path: circle(29% at 50% 50%)!important;
+    clip-path: circle(24% at 50% 50%)!important;
   }
 }
 
@@ -46,7 +46,7 @@
 {
   .canvas
   {
-    clip-path: circle(25% at 50% 50%)!important;
+    clip-path: circle(20% at 50% 50%)!important;
   }
 }
 
@@ -54,7 +54,7 @@
 {
   .canvas
   {
-    clip-path: circle(23% at 50% 50%)!important;
+    clip-path: circle(18% at 50% 50%)!important;
   }
 }
 
@@ -62,7 +62,7 @@
 {
   .canvas
   {
-    clip-path: circle(35% at 50% 50%)!important;
+    clip-path: circle(30% at 50% 50%)!important;
   }
 }
 
@@ -70,7 +70,7 @@
 {
   .canvas
   {
-    clip-path: circle(31% at 50% 50%)!important;
+    clip-path: circle(26% at 50% 50%)!important;
   }
 }
 
@@ -78,7 +78,7 @@
 {
   .canvas
   {
-    clip-path: circle(42% at 50% 50%)!important;
+    clip-path: circle(37% at 50% 50%)!important;
     
   }
 }
@@ -87,7 +87,7 @@
 {
   .canvas
   {
-    clip-path: circle(47% at 50% 50%)!important;
+    clip-path: circle(42% at 50% 50%)!important;
     
   }
 }
@@ -96,7 +96,7 @@
 {
   .canvas
   {
-    clip-path: circle(45% at 50% 50%)!important;
+    clip-path: circle(35% at 50% 50%)!important;
     
   }
 }
@@ -105,7 +105,7 @@
 {
   .canvas
   {
-    clip-path: circle(41% at 50% 50%)!important;
+    clip-path: circle(36% at 50% 50%)!important;
     
   }
 }
@@ -114,43 +114,62 @@
 {
   .canvas
   {
-    clip-path: circle(36% at 50% 50%)!important;
+    clip-path: circle(31% at 50% 50%)!important;
     
   }
 }
 
-@media screen and (max-width: 768px)
+@media screen and (width: 768px)
 {
   .canvas
   {
-    clip-path: circle(30% at 50% 50%)!important;
+    clip-path: circle(23% at 50% 50%)!important;
     
   }
 }
 
-@media screen and (max-width: 412px)
+@media screen and (width: 412px)
 {
   .canvas
   {
-    clip-path: circle(48% at 50% 50%)!important;
+    clip-path: circle(45% at 50% 50%)!important;
     
   }
 }
 
-@media screen and (max-width: 414px)
+@media screen and (width: 414px)
 {
   .canvas
   {
-    clip-path: circle(48% at 50% 50%)!important;
+    clip-path: circle(44% at 50% 50%)!important;
     
   }
 }
 
-@media screen and (max-width: 280px)
+@media screen and (width: 280px)
 {
   .canvas
   {
-    clip-path: circle(39% at 50% 50%)!important;
+    clip-path: circle(34% at 50% 50%)!important;
+    
+  }
+}
+
+
+@media screen and (width: 393px)
+{
+  .canvas
+  {
+    clip-path: circle(47% at 50% 50%)!important;
+    
+  }
+}
+
+@media screen and (width: 820px)
+{
+  .canvas
+  {
+    clip-path: circle(27% at 50% 50%)!important;
     
   }
 }
