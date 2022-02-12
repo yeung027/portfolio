@@ -57,6 +57,11 @@ h1.h12
     align-items: center;
 }
 
+.pug
+{
+  margin-top:20px;
+}
+
 .name
 {
     display: block;

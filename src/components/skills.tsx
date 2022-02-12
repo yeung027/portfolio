@@ -132,7 +132,9 @@ class Skills extends Component<MyProps, MyStates>
 
                 <div className={this.parent.state.isMobile ? mobileStyles.item : styles.item}>
                   <div className={this.parent.state.isMobile ? [mobileStyles.icon, mobileStyles.iconCenter].join(' ') : [styles.icon, styles.iconCenter].join(' ')}>
-                    <Image src="/skills/pug.png" alt="me" width="48" height="20" />
+                    <div className={this.parent.state.isMobile ? mobileStyles.pug : styles.pug}>
+                      <Image src="/skills/pug.png" alt="me" width="48" height="20" />
+                    </div>
                   </div>
                   <div className={this.parent.state.isMobile ? mobileStyles.name : styles.name}>Pug</div>
                 </div>

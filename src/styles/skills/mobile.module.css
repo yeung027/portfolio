@@ -41,9 +41,9 @@ h1.h12
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin:14px 0 0 0;
+    margin:12px 0 0 0;
     row-gap: 10px;
-    justify-content: left;
+    justify-content: center;
 }
 
 .item
@@ -52,7 +52,7 @@ h1.h12
     display: flex;
     flex-direction: column;
     min-width: 70px;
-    margin:0 7px;
+    margin:0 9px;
 }
 
 .itemMargin
@@ -71,6 +71,11 @@ h1.h12
 .iconCenter
 {
     align-items: center;
+}
+
+.pug
+{
+  margin-top:40px;
 }
 
 .name

@@ -108,6 +108,7 @@ h1.h12
 .formColumnWrapper
 {
   margin:6px 0;
+  width: 100%;
 }
 
 .formColumnWrapper input[type=text], .formColumnWrapper textarea
@@ -115,12 +116,12 @@ h1.h12
   background-color: #ebeff2;
   border: #E0E2E5 1px solid;
   font-size: 20px;
-  min-width: 90%;
+  width: 80%;
 }
 
 .formColumnWrapper textarea
 {
-  min-width: 90%;
+  width: 90%;
   min-height: 120px;
 }
 
