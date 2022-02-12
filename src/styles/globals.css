@@ -41,9 +41,9 @@ a {
 html, body 
 {
   height:100%;
+  width: 100%;
   background-image: linear-gradient(to right bottom, #DCECEF, #E0E6F6, #E7F0F2, #CDD1F5, #E0E6F6);
   background-attachment: fixed;
-
 }
 
 .button

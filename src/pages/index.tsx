@@ -9,7 +9,6 @@ import Skills from '../components/skills'
 import Work from '../components/work'
 import Payment from '../components/payment'
 import Contact from '../components/contact'
-import { ToonShaderHatching } from 'three-stdlib';
 
 let minDesktopWindowWidth: number;
 minDesktopWindowWidth = 980;
@@ -46,6 +45,7 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
     this.state = {
       originIsMobile: ua.isMobile,
       isMobile: ua.isMobile,
+      isTablet: ua.isTablet,
       useragent: useragent,
     }//END state
 
@@ -81,7 +81,11 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
         this.setState({ isMobile: temp });
       }
 
+      if(this.state.isTablet) this.setState({ isMobile: false });
+
     }//END typeof window
+
+
   }//END updateIsMobile
 
   windowResizeHandler()
@@ -99,7 +103,6 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
     const that = this;
     window.addEventListener('resize', this.windowResizeHandler);
     this.updateIsMobile();
-    
   }//END componentDidMount
 
   componentWillUnmount()
@@ -113,20 +116,37 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
 
   render() 
   {
+      let elements  = <div className={this.state.isMobile? mobileStyles.outer : styles.outer}> 
+      <div className={this.state.isMobile? mobileStyles.container : styles.container}>
+        <TopMenu ref={this.topMenuRef} parent={this} />
+        <Introduction ref={this.introductionRef} parent={this} />
+        <Skills ref={this.skillsRef} parent={this} />
+        <Work ref={this.workRef} parent={this} />
+        <Payment ref={this.paymentRef} parent={this} />
+        <Contact ref={this.contactRef} parent={this} />
+      </div>
+      </div>
+
+      if(this.state.isTablet)
+      {
+        elements  = <nav><div className={this.state.isMobile? mobileStyles.outer : styles.outer}> 
+      <div className={this.state.isMobile? mobileStyles.container : styles.container}>
+        <TopMenu ref={this.topMenuRef} parent={this} />
+        <Introduction ref={this.introductionRef} parent={this} />
+        <Skills ref={this.skillsRef} parent={this} />
+        <Work ref={this.workRef} parent={this} />
+        <Payment ref={this.paymentRef} parent={this} />
+        <Contact ref={this.contactRef} parent={this} />
+      </div>
+      </div>
+      </nav>
+      }
+
     return  <>
               <Head>
                 <title>Hei Yeung:Web Developer</title>
               </Head>
-              <div className={this.state.isMobile? mobileStyles.outer : styles.outer}>
-              <div className={this.state.isMobile? mobileStyles.container : styles.container}>
-                <TopMenu ref={this.topMenuRef} parent={this} />
-                <Introduction ref={this.introductionRef} parent={this} />
-                <Skills ref={this.skillsRef} parent={this} />
-                <Work ref={this.workRef} parent={this} />
-                <Payment ref={this.paymentRef} parent={this} />
-                <Contact ref={this.contactRef} parent={this} />
-              </div>
-              </div>
+              {elements}
               
             </>
   }//END render
