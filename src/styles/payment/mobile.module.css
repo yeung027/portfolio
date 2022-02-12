@@ -1,5 +1,65 @@
 .container
 {
-    /*border:red 3px solid;*/
-    margin-top: 20px;
+    font-family: 'Philosopher', sans-serif;
+    margin:87px 0 0 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.titles
+{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: center;
+  align-items:center;
+  min-width: 70%;
+}
+
+.titlesInner
+{
+  min-width: 95%;
+  max-width: 95%;
+  text-align: left;
+}
+
+h1.h11
+{
+    font-size: 30px;
+    color:#252D48;
+    font-weight: 700;
+    text-align: left;
+}
+h1.h12
+{
+    font-size: 30px;
+    color:#FAA536;
+    font-weight: 700;
+    text-align: left;
+}
+
+article.description
+{
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    line-height: 24px;
+    color:#798197;
+    font-weight: 500;
+    margin: 10px 0 0 0;
+}
+
+.contentWrapper
+{
+  display: flex;
+  justify-content: center;
+}
+
+.contentInner
+{
+  width: 95%;
+}
+
+.buttonArea
+{
+  margin: 10px 0 0 0;
 }

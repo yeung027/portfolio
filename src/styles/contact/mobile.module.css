@@ -1,5 +1,156 @@
 .container
 {
-    /*border:red 3px solid;*/
-    margin-top: 20px;
+    font-family: 'Philosopher', sans-serif;
+    margin:87px 0 0 0;
+    display: flex;
+    flex-direction: column;
 }
+
+.titles
+{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: center;
+  align-items:center;
+  min-width: 70%;
+}
+
+.titlesInner
+{
+  min-width: 95%;
+  max-width: 95%;
+  text-align: left;
+}
+
+h1.h11
+{
+    font-size: 30px;
+    color:#252D48;
+    font-weight: 700;
+    text-align: left;
+}
+h1.h12
+{
+    font-size: 30px;
+    color:#FAA536;
+    font-weight: 700;
+    text-align: left;
+}
+
+.contentWrapper
+{
+  display: flex;
+  justify-content: center;
+}
+
+.contentInner
+{
+  width: 95%;
+}
+
+.formContainer
+{
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding:0;
+  margin:0;
+  font-size: 0;
+  width: 100%;
+}
+
+.dialogContent
+{
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  line-height: 20px;
+  color:#798197;
+  font-weight: 500;
+  margin:16px 0 0 0;
+  padding: 0 5px;
+}
+
+.emailLink
+{
+  margin:0 0 0 10px;
+}
+
+.emailLink a
+{
+  color:#80ACFA;
+  text-decoration: underline;
+}
+
+.emailLink a:hover
+{
+  color:#fab75f;
+}
+
+.orP
+{
+  color: #252D48;
+}
+
+.formWrapper
+{
+  font-size: 20px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 25px 5px rgba(0,0,0,0.07); 
+  box-shadow: 0px 0px 25px 5px rgba(0,0,0,0.07);
+  margin:16px 0 0 0;
+  padding:5px 10px 10px 10px;
+}
+
+.formColumnWrapper
+{
+  margin:6px 0;
+}
+
+.formColumnWrapper input[type=text], .formColumnWrapper textarea
+{
+  background-color: #ebeff2;
+  border: #E0E2E5 1px solid;
+  font-size: 20px;
+  min-width: 90%;
+}
+
+.formColumnWrapper textarea
+{
+  min-width: 90%;
+  min-height: 120px;
+}
+
+.formColumnWrapper input[type=text]
+{
+  line-height: 20px;
+}
+
+.formColumnWrapper input[type=text]::placeholder, .formColumnWrapper textarea::placeholder
+{
+  color:#798197;
+  padding:0 5px;
+}
+
+.formColumnWrapper:after
+{
+  content: '*';
+  color:#faa536;
+  font-size: 20px;
+  line-height: 20px;
+  margin:0 3px;
+}
+
+.formColumnWrapper:not(span):after
+{
+  vertical-align:middle;
+}
+
+.formColumnWrapper:not(div):after
+{
+  vertical-align:top;
+}
+

@@ -121,10 +121,10 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
               <div className={this.state.isMobile? mobileStyles.container : styles.container}>
                 <TopMenu ref={this.topMenuRef} parent={this} />
                 <Introduction ref={this.introductionRef} parent={this} />
-                {/*<Skills ref={this.skillsRef} parent={this} />
+                <Skills ref={this.skillsRef} parent={this} />
                 <Work ref={this.workRef} parent={this} />
                 <Payment ref={this.paymentRef} parent={this} />
-  <Contact ref={this.contactRef} parent={this} />*/}
+                <Contact ref={this.contactRef} parent={this} />
               </div>
               </div>
               

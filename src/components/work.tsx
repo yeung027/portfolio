@@ -34,12 +34,16 @@ class Work extends Component<MyProps, MyStates>
   {
     return  <section className={this.parent.state.isMobile ? mobileStyles.container : styles.container}>
               <div className={this.parent.state.isMobile ? mobileStyles.titles : styles.titles}>
-                <h1 className={this.parent.state.isMobile ? mobileStyles.h11 : styles.h11}>Work</h1>
-                <h1 className={this.parent.state.isMobile ? mobileStyles.h12 : styles.h12}>Stuff I&#39;ve Built</h1>
+                <div className={this.parent.state.isMobile ? mobileStyles.titlesInner : styles.titlesInner}>
+                  <h1 className={this.parent.state.isMobile ? mobileStyles.h11 : styles.h11}>Work</h1>
+                  <h1 className={this.parent.state.isMobile ? mobileStyles.h12 : styles.h12}>Stuff I&#39;ve Built</h1>
+                </div>
               </div>
 
               <div className={this.parent.state.isMobile ? mobileStyles.item : styles.item}>
                 <div className={this.parent.state.isMobile ? mobileStyles.left : styles.left}>
+                <div className={this.parent.state.isMobile ? mobileStyles.contentWrapper : styles.contentWrapper}>
+                <div className={this.parent.state.isMobile ? mobileStyles.contentInner : styles.contentInner}>
                   <h5 className={this.parent.state.isMobile ? mobileStyles.workname : styles.workname}>思覺失調這一課</h5>
                   <article className={this.parent.state.isMobile ? mobileStyles.description : styles.description}>
                     <p>
@@ -74,6 +78,8 @@ class Work extends Component<MyProps, MyStates>
                       </div>
                     </div>
                   </article>
+                  </div>
+                  </div>
                 </div>
                 <div className={this.parent.state.isMobile ? mobileStyles.right : styles.right}>
                   <Image src="/work/workpreview1.png" alt="me" width="370" height="319" />

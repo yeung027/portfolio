@@ -1,5 +1,108 @@
 .container
 {
-    /*border:red 3px solid;*/
+    font-family: 'Philosopher', sans-serif;
+    margin:87px 0 0 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.titles
+{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: center;
+  align-items:center;
+  min-width: 70%;
+}
+
+.titlesInner
+{
+  min-width: 90%;
+  max-width: 90%;
+  text-align: left;
+}
+
+h1.h11
+{
+    font-size: 30px;
+    color:#252D48;
+    font-weight: 700;
+    text-align: left;
+}
+h1.h12
+{
+    font-size: 30px;
+    color:#FAA536;
+    font-weight: 700;
+    text-align: left;
+}
+
+.item
+{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.left 
+{
+  margin-top: 20px;
+}
+
+.right 
+{
     margin-top: 20px;
+}
+
+.workname
+{
+    color:#333;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+article.description
+{
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    line-height: 24px;
+    color:#798197;
+    font-weight: 500;
+    margin: 10px 0 0 0;
+}
+
+.linkP a
+{
+    color:#6198F9;
+}
+
+.linkP a:hover
+{
+    color:#FBB432;
+    text-decoration: underline;
+}
+
+.qrP
+{
+    margin: 13px 0 0 0;
+}
+
+.buttonArea
+{
+    margin:12px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 18px;
+}
+
+.contentWrapper
+{
+  display: flex;
+  justify-content: center;
+}
+
+.contentInner
+{
+  width: 95%;
 }

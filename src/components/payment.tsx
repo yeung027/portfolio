@@ -32,19 +32,25 @@ class Payment extends Component<MyProps, MyStates>
   {
     return  <section className={this.parent.state.isMobile ? mobileStyles.container : styles.container}>
               <div className={this.parent.state.isMobile ? mobileStyles.titles : styles.titles}>
-                <h1 className={this.parent.state.isMobile ? mobileStyles.h11 : styles.h11}>Payment API</h1>
-                <h1 className={this.parent.state.isMobile ? mobileStyles.h12 : styles.h12}>Ecommerce Website</h1>
+                <div className={this.parent.state.isMobile ? mobileStyles.titlesInner : styles.titlesInner}>
+                  <h1 className={this.parent.state.isMobile ? mobileStyles.h11 : styles.h11}>Payment API</h1>
+                  <h1 className={this.parent.state.isMobile ? mobileStyles.h12 : styles.h12}>Ecommerce Website</h1>
+                </div>
               </div>
-              <article className={this.parent.state.isMobile ? mobileStyles.description : styles.description}>
-                <p>
-                I can make a website with payment gateway, so visitor can shop and pay online.
-                </p>
-                </article>
-                <div className={this.parent.state.isMobile ? mobileStyles.buttonArea : styles.buttonArea}>
-                  <div className={'button'}>
-                    Donate
+              <div className={this.parent.state.isMobile ? mobileStyles.contentWrapper : styles.contentWrapper}>
+                <div className={this.parent.state.isMobile ? mobileStyles.contentInner : styles.contentInner}>
+                  <article className={this.parent.state.isMobile ? mobileStyles.description : styles.description}>
+                    <p>
+                    I can make a website with payment gateway, so visitor can shop and pay online.
+                    </p>
+                  </article>
+                  <div className={this.parent.state.isMobile ? mobileStyles.buttonArea : styles.buttonArea}>
+                    <div className={'button'}>
+                        Donate
+                    </div>
                   </div>
                 </div>
+              </div>
             </section>
   }//END render
 

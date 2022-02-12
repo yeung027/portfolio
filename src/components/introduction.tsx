@@ -41,8 +41,12 @@ class Introduction extends Component<MyProps, MyStates>
   {
     return  <section className={this.parent.state.isMobile ? mobileStyles.container : styles.container}>
               <div className={this.parent.state.isMobile ? [mobileStyles.item, mobileStyles.left].join(' ') : [styles.item, styles.left].join(' ')}>
-                <h1 className={this.parent.state.isMobile ? mobileStyles.h11 : styles.h11}>Hey! I&#39;m</h1>
-                <h1 className={this.parent.state.isMobile ? mobileStyles.h12 : styles.h12}>Hei Yeung</h1>
+                <div className={this.parent.state.isMobile ? mobileStyles.titles : styles.titles}>
+                  <div className={this.parent.state.isMobile ? mobileStyles.titlesInner : styles.titlesInner}>
+                    <h1 className={this.parent.state.isMobile ? mobileStyles.h11 : styles.h11}>Hey! I&#39;m</h1>
+                    <h1 className={this.parent.state.isMobile ? mobileStyles.h12 : styles.h12}>Hei Yeung</h1>
+                  </div>
+                </div>
                 <article className={this.parent.state.isMobile ? mobileStyles.description : styles.description}>
                 <p>
                   I am a Full-stack Developer. Well-versed in back-end frameworks such as Node.js, Next.js, Express.js and Ruby on rails.
