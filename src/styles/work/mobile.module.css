@@ -95,14 +95,3 @@ article.description
     flex-direction: column;
     row-gap: 18px;
 }
-
-.contentWrapper
-{
-  display: flex;
-  justify-content: center;
-}
-
-.contentInner
-{
-  width: 95%;
-}

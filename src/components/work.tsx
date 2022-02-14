@@ -42,44 +42,41 @@ class Work extends Component<MyProps, MyStates>
 
               <div className={this.parent.state.isMobile ? mobileStyles.item : styles.item}>
                 <div className={this.parent.state.isMobile ? mobileStyles.left : styles.left}>
-                <div className={this.parent.state.isMobile ? mobileStyles.contentWrapper : styles.contentWrapper}>
-                <div className={this.parent.state.isMobile ? mobileStyles.contentInner : styles.contentInner}>
-                  <h5 className={this.parent.state.isMobile ? mobileStyles.workname : styles.workname}>思覺失調這一課</h5>
-                  <article className={this.parent.state.isMobile ? mobileStyles.description : styles.description}>
-                    <p>
-                      A e-book written by a psychosis patient which about herself.
-                    </p>
-                    <p>
-                      It is a responsive website written in nextjs. 
-                    </p>
-                    <p>
-                      Also there are react native prototype version: 
-                    </p>
-                    <p className={this.parent.state.isMobile ? mobileStyles.linkP : styles.linkP}>
-                      <Link href="https://expo.dev/@heyhei/appbook">
-                        <a target="_blank">
-                          https://expo.dev/@heyhei/appbook
-                        </a>
+                <h5 className={this.parent.state.isMobile ? mobileStyles.workname : styles.workname}>思覺失調這一課</h5>
+                <article className={this.parent.state.isMobile ? mobileStyles.description : styles.description}>
+                  <p>
+                    A e-book written by a psychosis patient which about herself.
+                  </p>
+                  <p>
+                    It is a responsive website written in nextjs. 
+                  </p>
+                  <p>
+                    Also there are react native prototype version: 
+                  </p>
+                  <p className={this.parent.state.isMobile ? mobileStyles.linkP : styles.linkP}>
+                    <Link href="https://expo.dev/@heyhei/appbook">
+                      <a target="_blank">
+                        https://expo.dev/@heyhei/appbook
+                      </a>
+                    </Link>
+                  </p>
+                  <p className={this.parent.state.isMobile ? mobileStyles.qrP : styles.qrP}><Image src="/work/qr1.png" alt="me" width="84" height="84" /></p>
+                  <div className={this.parent.state.isMobile ? mobileStyles.buttonArea : styles.buttonArea}>
+                    
+                    <div className={'button'}>
+                      <Link href="http://iloveh3k.com">
+                        <a target="_blank">View</a>
                       </Link>
-                    </p>
-                    <p className={this.parent.state.isMobile ? mobileStyles.qrP : styles.qrP}><Image src="/work/qr1.png" alt="me" width="84" height="84" /></p>
-                    <div className={this.parent.state.isMobile ? mobileStyles.buttonArea : styles.buttonArea}>
-                      
-                      <div className={'button'}>
-                        <Link href="http://iloveh3k.com">
-                          <a target="_blank">View</a>
-                        </Link>
-                      </div>
-
-                      <div className={'button'}>
-                        <Link href="https://expo.dev/@heyhei/appbook">
-                          <a target="_blank">React Native Version</a>
-                        </Link>
-                      </div>
                     </div>
-                  </article>
+
+                    <div className={'button'}>
+                      <Link href="https://expo.dev/@heyhei/appbook">
+                        <a target="_blank">React Native Version</a>
+                      </Link>
+                    </div>
                   </div>
-                  </div>
+                </article>
+ 
                 </div>
                 <div className={this.parent.state.isMobile ? mobileStyles.right : styles.right}>
                   <Image src="/work/workpreview1.png" alt="me" width="370" height="319" />
