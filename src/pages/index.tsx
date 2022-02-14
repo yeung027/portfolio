@@ -22,6 +22,7 @@ type MyProps = {
 type MyStates = {
     originIsMobile: any,
     isMobile: boolean,
+    isTablet: boolean,
     useragent: string
 };
 
