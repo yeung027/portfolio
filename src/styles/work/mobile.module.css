@@ -4,6 +4,7 @@
     margin:87px 0 0 0;
     display: flex;
     flex-direction: column;
+    padding:0 20px;
 }
 
 .titles
@@ -12,8 +13,7 @@
   flex-direction: column;
   text-align: left;
   justify-content: center;
-  align-items:center;
-  min-width: 70%;
+  align-items:left;
 }
 
 .titlesInner

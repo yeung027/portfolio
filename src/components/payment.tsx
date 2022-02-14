@@ -37,18 +37,14 @@ class Payment extends Component<MyProps, MyStates>
                   <h1 className={this.parent.state.isMobile ? mobileStyles.h12 : styles.h12}>Ecommerce Website</h1>
                 </div>
               </div>
-              <div className={this.parent.state.isMobile ? mobileStyles.contentWrapper : styles.contentWrapper}>
-                <div className={this.parent.state.isMobile ? mobileStyles.contentInner : styles.contentInner}>
-                  <article className={this.parent.state.isMobile ? mobileStyles.description : styles.description}>
-                    <p>
-                    I can make a website with payment gateway, so visitor can shop and pay online.
-                    </p>
-                  </article>
-                  <div className={this.parent.state.isMobile ? mobileStyles.buttonArea : styles.buttonArea}>
-                    <div className={'button'}>
-                        Donate
-                    </div>
-                  </div>
+              <article className={this.parent.state.isMobile ? mobileStyles.description : styles.description}>
+                <p>
+                I can make a website with payment gateway, so visitor can shop and pay online.
+                </p>
+              </article>
+              <div className={this.parent.state.isMobile ? mobileStyles.buttonArea : styles.buttonArea}>
+                <div className={'button'}>
+                    Donate
                 </div>
               </div>
             </section>

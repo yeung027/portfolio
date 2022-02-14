@@ -4,6 +4,7 @@
     margin:87px 0 0 0;
     display: flex;
     flex-direction: column;
+    padding:0 20px;
 }
 
 .titles
@@ -12,8 +13,7 @@
   flex-direction: column;
   text-align: left;
   justify-content: center;
-  align-items:center;
-  min-width: 70%;
+  align-items:left;
 }
 
 .titlesInner
@@ -46,17 +46,6 @@ article.description
     color:#798197;
     font-weight: 500;
     margin: 10px 0 0 0;
-}
-
-.contentWrapper
-{
-  display: flex;
-  justify-content: center;
-}
-
-.contentInner
-{
-  width: 95%;
 }
 
 .buttonArea
