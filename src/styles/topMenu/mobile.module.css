@@ -28,7 +28,7 @@
   flex-direction: column;
   align-items:flex-end;
   cursor: pointer;
-  height:20.5px;
+  height:21px;
 }
 
 .mobileMenuButton .line1, .mobileMenuButton .line2, .mobileMenuButton .line3
@@ -36,13 +36,23 @@
   width: 20px;
   height: 3px;
   background-color: #757575;
-  margin: 1.9px 0;
+  position:absolute;
+}
+
+.mobileMenuButton .line1
+{
+  margin-top: 0;
+}
+
+.mobileMenuButton .line2
+{
+  margin-top:6.5px;
 }
 
 .mobileMenuButton .line3
 {
   width: 23px;
-  margin-top: 2px;
+  margin-top: 13.5px;
 }
 
 .mobileMenuButtonAnim .line1
@@ -73,7 +83,7 @@
     -webkit-transform: rotate(0deg);
     -moz-transform: rotateY(0deg);
     transform-origin:center;
-    margin: 1.9px 0 1.9px 0;
+    margin-top: 0;
   }
   to   
   {
@@ -81,7 +91,7 @@
     -webkit-transform: rotate(45deg);
     -moz-transform: rotateY(45deg);
     transform-origin:center;
-    margin: 1.9px 0 1.9px 0;
+    margin-top: 3.5px;
   }
 }
 
@@ -92,7 +102,7 @@
     -webkit-transform: rotate(0deg);
     -moz-transform: rotateY(0deg);
     transform-origin:center;
-    margin: 1.9px 0 0 0;
+    margin-top: 6.5px;
   }
   to   
   {
@@ -100,7 +110,7 @@
     -webkit-transform: rotate(-45deg);
     -moz-transform: rotateY(-45deg);
     transform-origin:center;
-    margin: -4.9px 0 0 0;
+    margin-top: 3px;
   }
 }
 
