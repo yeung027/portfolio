@@ -35,8 +35,13 @@ class TopMenu extends Component<MyProps, MyStates>
 
   menuButtonClick() 
   {
-    console.log('menuButtonClick');
+    //console.log('menuButtonClick: this.mobileMenuRef: ' + this.mobileMenuRef.current.state.open);
     this.setState({ menuIconAnim: true });
+    if(this.mobileMenuRef && this.mobileMenuRef.current)
+    this.mobileMenuRef.current.setState({ 
+      isAnimating:true,
+      open: true
+     });
   }//END menuButtonClick
 
   render() 
@@ -69,7 +74,7 @@ class TopMenu extends Component<MyProps, MyStates>
                 <div className={this.parent.state.isMobile ? [mobileStyles.item, mobileStyles.itemRight, 'button'].join(' ') : [styles.item, styles.itemRight, 'button'].join(' ')}>
                   <Link href="/">Contact</Link>
                 </div>
-                <div className={menuIconAnim}  onClick={this.menuButtonClick}>
+                <div className={menuIconAnim} onClick={this.menuButtonClick}>
                   <div className={mobileStyles.menuIconOuter}>
                     <div className={mobileStyles.menuIconInner}>
                       <div className={mobileStyles.line1}></div>

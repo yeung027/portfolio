@@ -8,7 +8,8 @@ type MyProps = {
 };
 
 type MyStates = {
-  
+  open:boolean
+  isAnimating:boolean
 };
 
 interface MobileMenu {
@@ -23,19 +24,50 @@ class MobileMenu extends Component<MyProps, MyStates>
     this.parent = props.parent;
 
     this.state = {
-      
+      open: false,
+      isAnimating:false,
     }//END state
     
-    
+    this.emptyAreaClick = this.emptyAreaClick.bind(this);
+    this.onWrapperAnimationEnd = this.onWrapperAnimationEnd.bind(this);
   }//END constructor
 
+  emptyAreaClick()
+  {
+    //console.log('emptyAreaClick');
+    this.setState({ 
+      isAnimating: true,
+      open:false
+     });
+  }//END emptyAreaClick
 
+  onWrapperAnimationEnd()
+  {
+    //console.log('anim end~~~')
+    this.setState({ 
+      isAnimating: false
+     });
+  }//END onWrapperAnimationEnd
 
   render() 
   {
+    let containerClass  = this.parent.parent.state.isMobile ? mobileStyles.container : styles.container;
+    let wrapperClass    = mobileStyles.wrapper;
+    if(!this.state.isAnimating)
+      containerClass  = [containerClass, this.state.open?  mobileStyles.open : mobileStyles.close].join(' ');
+    
+    if(this.state.isAnimating && this.state.open)
+    {
+      wrapperClass  = [wrapperClass, mobileStyles.fadeIn].join(' ');
+    }
+    else if(this.state.isAnimating && !this.state.open)
+    {
+      wrapperClass  = [wrapperClass, mobileStyles.fadeOut].join(' ');
+    }
 
-    return  <div className={this.parent.parent.state.isMobile ? mobileStyles.container : styles.container}>
-              <div className={mobileStyles.wrapper}>
+    return  <div className={containerClass}>
+        
+              <div className={wrapperClass} onAnimationEnd={this.onWrapperAnimationEnd}>
                 <div className={mobileStyles.title}>
                   Hei Yeung
                 </div>
@@ -55,6 +87,11 @@ class MobileMenu extends Component<MyProps, MyStates>
                   <Link href="/">Contact</Link>
                 </div>
               </div>
+
+              <div className={mobileStyles.emptyArea} onClick={this.emptyAreaClick}>
+                
+              </div>
+
             </div>
   }//END render
 
