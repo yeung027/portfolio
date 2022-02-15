@@ -93,10 +93,7 @@ h1.h12
   background-image: url('/contact/2m.png');
 }
 
-nav .row2M
-{
-  width: 40vw;
-}
+
 
 .row2R
 {
@@ -129,10 +126,6 @@ nav .row2M
   background-color: #fff;
 }
 
-nav .row3M
-{
-  width: 64vw;
-}
 
 .row3R
 {
@@ -162,11 +155,7 @@ nav .row3M
   background-color: #fff;
 }
 
-nav .row4M
-{
-  width: 64vw;
-  background-color: #fff;
-}
+
 
 .row4R
 {
@@ -197,12 +186,6 @@ nav .row4M
   background-image: url('/contact/5m.png');
 }
 
-nav .row5M
-{
-  width: 64vw;
-  background-repeat: repeat-x;
-  background-image: url('/contact/5m.png');
-}
 
 .row5R
 {
