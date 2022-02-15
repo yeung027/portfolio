@@ -81,7 +81,7 @@
     -webkit-transform: rotate(45deg);
     -moz-transform: rotateY(45deg);
     transform-origin:center;
-    margin: 6.6px 0 1.9px 0;
+    margin: 1.9px 0 1.9px 0;
   }
 }
 
@@ -100,7 +100,7 @@
     -webkit-transform: rotate(-45deg);
     -moz-transform: rotateY(-45deg);
     transform-origin:center;
-    margin: -4px 0 0 0;
+    margin: -4.9px 0 0 0;
   }
 }
 
