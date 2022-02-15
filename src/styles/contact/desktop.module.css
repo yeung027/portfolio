@@ -288,6 +288,14 @@ nav .ninjaDialog
 .formColumnWrapper
 {
   margin:16px 0;
+  display: grid;
+    grid:
+        "input star" 1fr / auto 0fr;
+}
+
+.formColumnWrapper .left
+{
+  width: 100%;
 }
 
 .formColumnWrapper input[type=text], .formColumnWrapper textarea
@@ -299,13 +307,15 @@ nav .ninjaDialog
 
 .formColumnWrapper textarea
 {
-  min-width: 500px;
+  width: 100%;
   min-height: 120px;
+  resize:none;
 }
 
 .formColumnWrapper input[type=text]
 {
   line-height: 20px;
+  width: 100%;
 }
 
 .formColumnWrapper input[type=text]::placeholder, .formColumnWrapper textarea::placeholder
@@ -314,21 +324,23 @@ nav .ninjaDialog
   padding:0 5px;
 }
 
-.formColumnWrapper:after
+.formColumnWrapper .star
 {
   content: '*';
   color:#faa536;
   font-size: 20px;
   line-height: 20px;
   margin:0 3px;
+  padding:0 7px;
+  width: fit-content;
 }
 
-.formColumnWrapper:not(span):after
+.formColumnWrapper:not(span) .star
 {
   vertical-align:middle;
 }
 
-.formColumnWrapper:not(div):after
+.formColumnWrapper:not(div) .star
 {
   vertical-align:top;
 }

@@ -97,13 +97,22 @@ class Contact extends Component<MyProps, MyStates>
                         <div className={this.parent.state.isMobile ? mobileStyles.formWrapper : styles.formWrapper}>
                           <form action="#" method="POST">
                             <div className={this.parent.state.isMobile ? mobileStyles.formColumnWrapper : styles.formColumnWrapper}>
-                              <input id="name" type="text" autoComplete="name" placeholder='Name' required />
+                              <div className={this.parent.state.isMobile ? mobileStyles.input : styles.input}>
+                                <input id="name" type="text" autoComplete="name" placeholder='Name' required />
+                              </div>
+                              <div className={this.parent.state.isMobile ? mobileStyles.star : styles.star}>*</div>
                             </div>
                             <div className={this.parent.state.isMobile ? mobileStyles.formColumnWrapper : styles.formColumnWrapper}>
-                              <input id="email" type="text" autoComplete="email" placeholder='email' required />
+                              <div className={this.parent.state.isMobile ? mobileStyles.input : styles.input}>
+                                <input id="email" type="text" autoComplete="email" placeholder='email' required />
+                              </div>
+                              <div className={this.parent.state.isMobile ? mobileStyles.star : styles.star}>*</div>
                             </div>
                             <span className={this.parent.state.isMobile ? mobileStyles.formColumnWrapper : styles.formColumnWrapper}>
-                              <textarea id="message" placeholder='Message' required />
+                              <div className={this.parent.state.isMobile ? mobileStyles.input : styles.input}>
+                                <textarea id="message" placeholder='Message' required />
+                              </div>
+                              <div className={this.parent.state.isMobile ? mobileStyles.star : styles.star}>*</div>
                             </span>
                           </form>
                         </div>
