@@ -7,6 +7,11 @@
     padding:0 2vw;
 }
 
+nav .container
+{
+    padding:0;
+}
+
 .titles
 {
   display: flex;
@@ -106,6 +111,11 @@ h1.h12
   padding:5px 10px 10px 10px;
 }
 
+nav .formWrapper
+{
+  padding:10px 10px 10px 10px;
+}
+
 .formColumnWrapper
 {
   margin:6px 0;
@@ -113,6 +123,11 @@ h1.h12
   display: grid;
     grid:
         "input star" 1fr / auto 0fr;
+}
+
+nav .formColumnWrapper
+{
+  margin:10px 0;
 }
 
 .formColumnWrapper input[type=text], .formColumnWrapper textarea
