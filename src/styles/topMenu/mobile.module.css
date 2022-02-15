@@ -24,11 +24,25 @@
 
 .mobileMenuButton
 {
+  cursor: pointer;
+  height:21px;
+  width: 20px;
+}
+
+.menuIconOuter
+{
+  position:absolute;
+  z-index: 101;
+}
+
+.menuIconInner
+{
   display: flex;
   flex-direction: column;
   align-items:flex-end;
   cursor: pointer;
   height:21px;
+  width: 20px;
 }
 
 .mobileMenuButton .line1, .mobileMenuButton .line2, .mobileMenuButton .line3

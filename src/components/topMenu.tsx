@@ -1,8 +1,8 @@
 import React,{Component} from 'react';
-import PropTypes from 'prop-types';
 import styles from '../styles/topMenu/desktop.module.css'
 import mobileStyles from '../styles/topMenu/mobile.module.css'
 import Link from 'next/link'
+import MobileMenu from '../components/mobileMenu'
 
 type MyProps = {
   parent:any
@@ -14,6 +14,7 @@ type MyStates = {
 
 interface TopMenu {
   parent: any
+  mobileMenuRef: any
 }
 
 class TopMenu extends Component<MyProps, MyStates>
@@ -27,6 +28,8 @@ class TopMenu extends Component<MyProps, MyStates>
       menuIconAnim: false
     }//END state
     
+    this.mobileMenuRef = React.createRef();
+
     this.menuButtonClick = this.menuButtonClick.bind(this);
   }//END constructor
 
@@ -46,6 +49,7 @@ class TopMenu extends Component<MyProps, MyStates>
     }
 
     return  <div className={this.parent.state.isMobile ? mobileStyles.container : styles.container}>
+              <MobileMenu ref={this.mobileMenuRef} parent={this} />
               <div className={this.parent.state.isMobile ? mobileStyles.group : styles.group}>
                 <div className={this.parent.state.isMobile ? [mobileStyles.item].join(' ') : [styles.item].join(' ')}>Hei Yeung</div>
               </div>
@@ -66,9 +70,13 @@ class TopMenu extends Component<MyProps, MyStates>
                   <Link href="/">Contact</Link>
                 </div>
                 <div className={menuIconAnim}  onClick={this.menuButtonClick}>
-                  <div className={mobileStyles.line1}></div>
-                  <div className={mobileStyles.line2}></div>
-                  <div className={mobileStyles.line3}></div>
+                  <div className={mobileStyles.menuIconOuter}>
+                    <div className={mobileStyles.menuIconInner}>
+                      <div className={mobileStyles.line1}></div>
+                      <div className={mobileStyles.line2}></div>
+                      <div className={mobileStyles.line3}></div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
