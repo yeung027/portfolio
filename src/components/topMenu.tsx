@@ -9,7 +9,7 @@ type MyProps = {
 };
 
 type MyStates = {
-  
+  menuIconAnim:boolean
 };
 
 interface TopMenu {
@@ -24,14 +24,27 @@ class TopMenu extends Component<MyProps, MyStates>
     this.parent = props.parent;
 
     this.state = {
-      
+      menuIconAnim: false
     }//END state
     
+    this.menuButtonClick = this.menuButtonClick.bind(this);
   }//END constructor
 
+  menuButtonClick() 
+  {
+    console.log('menuButtonClick');
+    this.setState({ menuIconAnim: true });
+  }//END menuButtonClick
 
   render() 
   {
+    let menuIconAnim = this.parent.state.isMobile ? [mobileStyles.mobileMenuButton, 'noselect'].join(' ') : [styles.mobileMenuButton, 'noselect'].join(' ');
+    if(this.state.menuIconAnim)
+    {
+      menuIconAnim  = menuIconAnim.slice();
+      menuIconAnim  = [menuIconAnim, mobileStyles.mobileMenuButtonAnim].join(' ');
+    }
+
     return  <div className={this.parent.state.isMobile ? mobileStyles.container : styles.container}>
               <div className={this.parent.state.isMobile ? mobileStyles.group : styles.group}>
                 <div className={this.parent.state.isMobile ? [mobileStyles.item].join(' ') : [styles.item].join(' ')}>Hei Yeung</div>
@@ -52,7 +65,7 @@ class TopMenu extends Component<MyProps, MyStates>
                 <div className={this.parent.state.isMobile ? [mobileStyles.item, mobileStyles.itemRight, 'button'].join(' ') : [styles.item, styles.itemRight, 'button'].join(' ')}>
                   <Link href="/">Contact</Link>
                 </div>
-                <div className={this.parent.state.isMobile ? mobileStyles.mobileMenuButton : styles.mobileMenuButton}>
+                <div className={menuIconAnim}  onClick={this.menuButtonClick}>
                   <div className={mobileStyles.line1}></div>
                   <div className={mobileStyles.line2}></div>
                   <div className={mobileStyles.line3}></div>

@@ -28,6 +28,7 @@
   flex-direction: column;
   align-items:flex-end;
   cursor: pointer;
+  height:20.5px;
 }
 
 .mobileMenuButton .line1, .mobileMenuButton .line2, .mobileMenuButton .line3
@@ -42,4 +43,74 @@
 {
   width: 23px;
   margin-top: 2px;
+}
+
+.mobileMenuButtonAnim .line1
+{
+  animation-delay: 0s;
+  animation: toclose1 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.mobileMenuButtonAnim .line2
+{
+  animation-delay: 0s;
+  animation: toclose2 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.mobileMenuButtonAnim .line3
+{
+  animation-delay: 0s;
+  animation: toclose3 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes toclose1 {
+  from 
+  {
+    transform:rotate(0deg); 
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotateY(0deg);
+    transform-origin:center;
+    margin: 1.9px 0 1.9px 0;
+  }
+  to   
+  {
+    transform:rotate(45deg); 
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotateY(45deg);
+    transform-origin:center;
+    margin: 6.6px 0 1.9px 0;
+  }
+}
+
+@keyframes toclose2 {
+  from 
+  {
+    transform:rotate(0deg); 
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotateY(0deg);
+    transform-origin:center;
+    margin: 1.9px 0 0 0;
+  }
+  to   
+  {
+    transform:rotate(-45deg); 
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotateY(-45deg);
+    transform-origin:center;
+    margin: -4px 0 0 0;
+  }
+}
+
+@keyframes toclose3 {
+  from 
+  {
+    opacity: 1;
+  }
+  to   
+  {
+    opacity: 0;
+  }
 }
