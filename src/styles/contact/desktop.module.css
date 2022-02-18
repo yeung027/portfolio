@@ -273,7 +273,7 @@ nav .ninjaDialog
   margin:16px 0;
   display: grid;
     grid:
-        "input star" 1fr / auto 0fr;
+        "input star" 1fr / auto 1fr;
 }
 
 .formColumnWrapper .left
@@ -309,7 +309,6 @@ nav .ninjaDialog
 
 .formColumnWrapper .star
 {
-  content: '*';
   color:#faa536;
   font-size: 20px;
   line-height: 20px;
