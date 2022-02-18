@@ -69,21 +69,21 @@
   margin-top: 13.5px;
 }
 
-.mobileMenuButtonAnim .line1
+.mobileMenuButtonOpen .line1
 {
   animation-delay: 0s;
   animation: toclose1 0.5s;
   animation-fill-mode: forwards;
 }
 
-.mobileMenuButtonAnim .line2
+.mobileMenuButtonOpen .line2
 {
   animation-delay: 0s;
   animation: toclose2 0.5s;
   animation-fill-mode: forwards;
 }
 
-.mobileMenuButtonAnim .line3
+.mobileMenuButtonOpen .line3
 {
   animation-delay: 0s;
   animation: toclose3 0.5s;
@@ -136,5 +136,77 @@
   to   
   {
     opacity: 0;
+  }
+}
+
+
+.mobileMenuButtonClose .line1
+{
+  animation-delay: 0s;
+  animation: toopen1 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.mobileMenuButtonClose .line2
+{
+  animation-delay: 0s;
+  animation: toopen2 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.mobileMenuButtonClose .line3
+{
+  animation-delay: 0s;
+  animation: toopen3 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes toopen1 {
+  from 
+  {
+    transform:rotate(45deg); 
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotateY(45deg);
+    transform-origin:center;
+    margin-top: 3.5px;
+    
+  }
+  to   
+  {
+    transform:rotate(0deg); 
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotateY(0deg);
+    transform-origin:center;
+    margin-top: 0;
+  }
+}
+
+@keyframes toopen2 {
+  from 
+  {
+    transform:rotate(-45deg); 
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotateY(-45deg);
+    transform-origin:center;
+    margin-top: 3px;
+  }
+  to   
+  {
+    transform:rotate(0deg); 
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotateY(0deg);
+    transform-origin:center;
+    margin-top: 6.5px;
+  }
+}
+
+@keyframes toopen3 {
+  from 
+  {
+    opacity: 0;
+  }
+  to   
+  {
+    opacity: 1;
   }
 }

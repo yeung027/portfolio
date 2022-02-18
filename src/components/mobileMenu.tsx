@@ -39,6 +39,12 @@ class MobileMenu extends Component<MyProps, MyStates>
       isAnimating: true,
       open:false
      });
+     if(this.parent)
+     {
+      this.parent.setState({ 
+        mobileMenuOpen: false
+       });
+     }
   }//END emptyAreaClick
 
   onWrapperAnimationEnd()

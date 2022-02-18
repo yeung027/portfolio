@@ -86,13 +86,13 @@
 @keyframes toOpen {
   from 
   {
-    margin-right: -70%;
+    right: -70%;
     -webkit-box-shadow: -6px 0px 15px -5px rgba(0,0,0,0); 
     box-shadow: -6px 0px 15px -5px rgba(0,0,0,0);
   }
   to   
   {
-    margin-right: 0%;
+    right: 0%;
     -webkit-box-shadow: -6px 0px 15px -5px rgba(0,0,0,0.3); 
     box-shadow: -6px 0px 15px -5px rgba(0,0,0,0.3);
   }
@@ -108,7 +108,7 @@
 @keyframes toClose {
   from 
   {
-    margin-right: 0%;
+    right: 0%;
     -webkit-box-shadow: -6px 0px 15px -5px rgba(0,0,0,0.3); 
     box-shadow: -6px 0px 15px -5px rgba(0,0,0,0.3);
   }
@@ -116,7 +116,7 @@
   {
     
 
-    margin-right: -70%;
+    right: -70%;
     -webkit-box-shadow: -6px 0px 15px -5px rgba(0,0,0,0); 
     box-shadow: -6px 0px 15px -5px rgba(0,0,0,0);
   }
