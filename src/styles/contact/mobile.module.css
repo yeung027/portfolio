@@ -127,6 +127,7 @@ nav .formWrapper
 .formColumnWrapper .input
 {
   width: 100%;
+  padding:0;
 }
 
 nav .formColumnWrapper
@@ -139,12 +140,11 @@ nav .formColumnWrapper
   background-color: #ebeff2;
   border: #E0E2E5 1px solid;
   font-size: 20px;
-  width: 100%;
+  width: 92%;
 }
 
 .formColumnWrapper textarea
 {
-  width: 100%;
   min-height: 120px;
   resize:none;
 }
@@ -166,8 +166,8 @@ nav .formColumnWrapper
   font-size: 20px;
   line-height: 20px;
   margin:0 3px;
-  padding:0 7px;
   width: fit-content;
+  margin-top: 3px;
 }
 
 .formColumnWrapper:not(span) .star
