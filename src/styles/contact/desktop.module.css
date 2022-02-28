@@ -271,12 +271,11 @@ nav .ninjaDialog
 .formColumnWrapper
 {
   margin:16px 0;
-  display: grid;
-    grid:
-        "input star" 1fr / auto 1fr;
+  display: flex;
+  flex-direction: row;
 }
 
-.formColumnWrapper .left
+.formColumnWrapper .input
 {
   width: 100%;
 }

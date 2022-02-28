@@ -120,9 +120,13 @@ nav .formWrapper
 {
   margin:6px 0;
   width: 100%;
-  display: grid;
-    grid:
-        "input star" 2fr / auto 0fr;
+  display: flex;
+  flex-direction: row;
+}
+
+.formColumnWrapper .input
+{
+  width: 100%;
 }
 
 nav .formColumnWrapper
@@ -163,6 +167,7 @@ nav .formColumnWrapper
   line-height: 20px;
   margin:0 3px;
   padding:0 7px;
+  width: fit-content;
 }
 
 .formColumnWrapper:not(span) .star

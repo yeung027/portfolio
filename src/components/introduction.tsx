@@ -63,7 +63,7 @@ class Introduction extends Component<MyProps, MyStates>
                 </article>
               </div>
               <div className={this.parent.state.isMobile ? [mobileStyles.item, mobileStyles.right].join(' ') : [styles.item, styles.right].join(' ')}>
-                {/*<Ninja parent={this} ref={this.ninjaRef} />*/}
+                <Ninja parent={this} ref={this.ninjaRef} />
               </div>
             </section>
   }//END render
