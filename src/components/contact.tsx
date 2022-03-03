@@ -65,7 +65,27 @@ class Contact extends Component<MyProps, MyStates>
     this.snackOnClick             = this.snackOnClick.bind(this);
     this.getSnackTransition       = this.getSnackTransition.bind(this);
     this.snackOnClose             = this.snackOnClose.bind(this);
+    this.submitSuccess            = this.submitSuccess.bind(this);
+    this.submitError              = this.submitError.bind(this);
   }//END constructor
+
+  submitSuccess(response)
+  {
+    this.setState({ 
+      snackOpen: true,
+      snackType: 'success',
+      snackMsg: 'Message send successly! Thanks for your enquiry!'
+     });
+  }//END submitSuccess
+
+  submitError(error)
+  {
+    this.setState({ 
+      snackOpen: true,
+      snackType: 'error',
+      snackMsg: 'Something went wrong, please try again later, sorry for the inconvenience.'
+    });
+  }//END submitError
 
   snackOnClose()
   {
@@ -165,14 +185,9 @@ class Contact extends Component<MyProps, MyStates>
 
   createContact()
   {
-    this.setState({ 
-      snackOpen: true,
-      snackType: 'error',
-      snackMsg: 'Something went wrong, please try again later, sorry for the inconvenience.'
-     });
-    //console.log('parent this.strapiBaseUrl : '+this.parent.strapiBaseUrl);
+    
     if(!this.validation()) return;
-
+    var self = this;
     var name      = this.nameRef.current ? this.nameRef.current.value : null;
     var email     = this.emailRef.current ? this.emailRef.current.value : null;
     var message   = this.messageRef.current ? this.messageRef.current.value : null;
@@ -181,20 +196,10 @@ class Contact extends Component<MyProps, MyStates>
       data:{name: name, email: email, message: message}
     })
     .then(function (response) {
-      //console.log(response);
-      this.setState({ 
-        snackOpen: true,
-        snackType: 'success',
-        snackMsg: 'Message send successly! Thanks for your enquiry!'
-       });
+      self.submitSuccess(response);
     })
     .catch(function (error) {
-      //console.log(error);
-      this.setState({ 
-        snackOpen: true,
-        snackType: 'error',
-        snackMsg: 'Something went wrong, please try again later, sorry for the inconvenience.'
-       });
+      self.submitError(error);
     });
 
 
