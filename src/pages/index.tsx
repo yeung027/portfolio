@@ -26,6 +26,7 @@ type MyStates = {
     useragent: string
 };
 
+
 interface IndexPage {
   topMenuRef: any
   introductionRef: any

@@ -270,7 +270,6 @@ nav .ninjaDialog
 
 .formColumnWrapper
 {
-  margin:16px 0;
   display: flex;
   flex-direction: row;
 }
@@ -327,3 +326,25 @@ nav .ninjaDialog
 }
 
 
+.errorMessageWrapper
+{
+  color:#eb4034;
+  margin:1px 0 10px 5px;
+  font-size: 18px;
+  cursor:not-allowed;
+}
+
+.formColumnWrapper.noError
+{
+  margin:16px 0;
+}
+
+.errorMessageWrapper.noError
+{
+  display: none;
+}
+
+.firstColumn
+{
+  
+}
