@@ -17,6 +17,7 @@ minDesktopWindowWidth = 980;
 type MyProps = {
     ua: any,
     useragent: any,
+    minDesktopWindowWidth: string
 };
 
 type MyStates = {
@@ -34,6 +35,7 @@ interface IndexPage {
   workRef: any
   paymentRef: any
   contactRef: any
+  minDesktopWindowWidth: string
 }
 
 class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates> 
@@ -44,6 +46,7 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
     const ua  = this.props.ua;
     let useragent: string;
     useragent = this.props.useragent;
+    this.minDesktopWindowWidth = this.props.minDesktopWindowWidth;
     this.state = {
       originIsMobile: ua.isMobile,
       isMobile: ua.isMobile,
@@ -69,10 +72,10 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
   {
     if(typeof window !== "undefined")
     {
-        if(process.env.minDesktopWindowWidth) 
+        if(this.minDesktopWindowWidth) 
         {
             
-            minDesktopWindowWidth   = parseInt(process.env.minDesktopWindowWidth);
+            minDesktopWindowWidth   = parseInt(this.minDesktopWindowWidth);
         }
         else console.warn('CANNOT FIND process.env.minDesktopWindowWidth');
 
@@ -97,7 +100,10 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
 
   static async getInitialProps(ctx) 
   {
-    return { useragent: ctx.ua.source }
+    return { 
+      useragent: ctx.ua.source ,
+      minDesktopWindowWidth: process.env.minDesktopWindowWidth
+    }
   }//END getInitialProps
 
   componentDidMount()

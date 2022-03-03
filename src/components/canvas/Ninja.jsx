@@ -118,7 +118,7 @@ class Model extends Component
     {
       setTimeout(
         function () {
-          console.log('gltf not loaded yet, retry is pending...');
+          //console.log('gltf not loaded yet, retry is pending...');
           this.applyMaterial(material);
         }
           .bind(this),
@@ -150,7 +150,7 @@ class Model extends Component
     });
 
     return true;
-    console.log('finally.....');
+    //console.log('finally.....');
   }//END applyMaterialToModel
   
   setMixer()
@@ -169,7 +169,7 @@ class Model extends Component
 
   retrySetMixer()
   {
-    console.log('gltf not loaded yet, retry set mixer is pending...');
+    //console.log('gltf not loaded yet, retry set mixer is pending...');
     setTimeout(
       function () {
       
