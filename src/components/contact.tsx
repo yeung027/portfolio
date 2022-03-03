@@ -4,6 +4,10 @@ import mobileStyles from '../styles/contact/mobile.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
 import axios from 'axios'
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+import Slide from '@material-ui/core/Slide';
+import Grow from '@material-ui/core/Grow';
 
 type MyProps = {
   parent:any
@@ -16,6 +20,9 @@ type MyStates = {
   nameErrorMsg: string
   emailErrorMsg: string
   messageErrorMsg: string
+  snackOpen: boolean
+  snackType: any
+  snackMsg: string
 };
 
 interface Contact {
@@ -39,6 +46,9 @@ class Contact extends Component<MyProps, MyStates>
       nameErrorMsg: null,
       emailErrorMsg: null,
       messageErrorMsg: null,
+      snackOpen: false,
+      snackType: 'success',
+      snackMsg: null
     }//END state
     
     this.nameRef = React.createRef();
@@ -48,19 +58,74 @@ class Contact extends Component<MyProps, MyStates>
     this.sendOnClick = this.sendOnClick.bind(this);
     this.createContact = this.createContact.bind(this);
     this.validation = this.validation.bind(this);
-    this.setEmailErrorMessage    = this.setEmailErrorMessage.bind(this);
+    this.setEmailErrorMessage     = this.setEmailErrorMessage.bind(this);
+    this.setNameErrorMessage      = this.setNameErrorMessage.bind(this);
+    this.setMessageErrorMessage   = this.setMessageErrorMessage.bind(this);
+    this.onInputKeyUp             = this.onInputKeyUp.bind(this);
+    this.snackOnClick             = this.snackOnClick.bind(this);
+    this.getSnackTransition       = this.getSnackTransition.bind(this);
+    this.snackOnClose             = this.snackOnClose.bind(this);
   }//END constructor
+
+  snackOnClose()
+  {
+    this.setState({ 
+      snackOpen: false,
+    });
+  }//END snackOnClose
+
+  getSnackTransition(props) {
+    if(this.state.snackType=='success')
+      return <Slide {...props} direction="left" />;
+    else
+      return <Grow {...props} />
+  }//END getSnackTransition
+
+  snackOnClick(e)
+  {
+    this.setState({ 
+      snackOpen: false,
+    });
+  }//END snackOnClick
+
+  onInputKeyUp(e)
+  {
+    //console.log('onInputKeyUp');
+    this.validation();
+  }//END onInputKeyUp
+
+  setNameErrorMessage(visible, msg)
+  {
+    if(!msg || msg.trim()=='') msg='Please enter your name';
+    this.setState({ 
+      nameError: visible,
+      nameErrorMsg:msg
+     });
+
+     //console.log('name error: '+this.state.nameError);
+  }//END setNameErrorMessage
 
   setEmailErrorMessage(visible, msg)
   {
-    if(!msg || msg.trim()=='') msg='hello';
+    if(!msg || msg.trim()=='') msg='Invalid email address';
     this.setState({ 
       emailError: visible,
       emailErrorMsg:msg
      });
 
-     console.log('email error: '+this.state.emailError);
+     //console.log('email error: '+this.state.emailError);
   }//END setEmailErrorMessage
+
+  setMessageErrorMessage(visible, msg)
+  {
+    if(!msg || msg.trim()=='') msg='Please enter details of your enquiry';
+    this.setState({ 
+      messageError: visible,
+      messageErrorMsg:msg
+     });
+
+     //console.log('message error: '+this.state.messageError);
+  }//END setMessageErrorMessage
 
 
   validation()
@@ -78,29 +143,58 @@ class Contact extends Component<MyProps, MyStates>
       this.setEmailErrorMessage(true, null);
       error++;
     }
+    else this.setEmailErrorMessage(false, null);
 
-    if(name.trim()=='')error++;
-    if(message.trim()=='')error++;
+    if(name.trim()=='')
+    {
+      this.setNameErrorMessage(true, null);
+      error++;
+    }
+    else this.setNameErrorMessage(false, null);
+
+    if(message.trim()=='')
+    {
+      this.setMessageErrorMessage(true, null);
+      error++;
+    }
+    else this.setMessageErrorMessage(false, null);
+
 
     return error <= 0;
   }//END validation
 
   createContact()
   {
+    this.setState({ 
+      snackOpen: true,
+      snackType: 'error',
+      snackMsg: 'Something went wrong, please try again later, sorry for the inconvenience.'
+     });
+    //console.log('parent this.strapiBaseUrl : '+this.parent.strapiBaseUrl);
     if(!this.validation()) return;
 
     var name      = this.nameRef.current ? this.nameRef.current.value : null;
     var email     = this.emailRef.current ? this.emailRef.current.value : null;
     var message   = this.messageRef.current ? this.messageRef.current.value : null;
 
-    axios.post('https://strapi-dx8mq.ondigitalocean.app/api/portfolio-contacts', {
+    axios.post(this.parent.strapiBaseUrl+'/api/portfolio-contacts', {
       data:{name: name, email: email, message: message}
     })
     .then(function (response) {
-      console.log(response);
+      //console.log(response);
+      this.setState({ 
+        snackOpen: true,
+        snackType: 'success',
+        snackMsg: 'Message send successly! Thanks for your enquiry!'
+       });
     })
     .catch(function (error) {
-      console.log(error);
+      //console.log(error);
+      this.setState({ 
+        snackOpen: true,
+        snackType: 'error',
+        snackMsg: 'Something went wrong, please try again later, sorry for the inconvenience.'
+       });
     });
 
 
@@ -109,7 +203,7 @@ class Contact extends Component<MyProps, MyStates>
 
   sendOnClick()
   {
-    console.log('sendOnClick~~');
+    //console.log('sendOnClick~~');
     this.createContact();
     
   }//END sendOnClick
@@ -147,6 +241,21 @@ class Contact extends Component<MyProps, MyStates>
 
 
     return  <section className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.container : styles.container}>
+              <Snackbar 
+                open={this.state.snackOpen} 
+                autoHideDuration={6000} 
+                onClose={this.snackOnClose}
+                onClick={this.snackOnClick}
+                TransitionComponent={this.getSnackTransition}
+              >
+                <MuiAlert 
+                  elevation={6} 
+                  variant="filled"
+                  severity={this.state.snackType}
+                >
+                  {this.state.snackMsg}
+                </MuiAlert>
+              </Snackbar>
               <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.titles : styles.titles}>
                 <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.titlesInner : styles.titlesInner}>
                   <h1 className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.h11 : styles.h11}>Contact</h1>
@@ -211,7 +320,7 @@ class Contact extends Component<MyProps, MyStates>
                           <form action="#" method="POST">
                             <div className={nameColumnClass}>
                               <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.input : styles.input}>
-                                <input id="name" type="text" autoComplete="name" ref={this.nameRef} placeholder='Name' required />
+                                <input id="name" type="text" autoComplete="name" ref={this.nameRef} placeholder='Name' required onKeyUp={this.onInputKeyUp} />
                               </div>
                               <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.star : styles.star}>*</div>
                             </div>
@@ -220,7 +329,7 @@ class Contact extends Component<MyProps, MyStates>
                             </div>
                             <div className={emailColumnClass}>
                               <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.input : styles.input}>
-                                <input id="email" type="text" autoComplete="email" ref={this.emailRef} placeholder='email' required />
+                                <input id="email" type="text" autoComplete="email" ref={this.emailRef} placeholder='email' required onKeyUp={this.onInputKeyUp} />
                               </div>
                               <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.star : styles.star}>*</div>
                             </div>
@@ -229,7 +338,7 @@ class Contact extends Component<MyProps, MyStates>
                             </div>
                             <div className={messageColumnClass}>
                               <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.input : styles.input}>
-                                <textarea id="message" ref={this.messageRef} placeholder='Message' required />
+                                <textarea id="message" ref={this.messageRef} placeholder='Message' required onKeyUp={this.onInputKeyUp} />
                               </div>
                               <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.star : styles.star}>*</div>
                             </div>

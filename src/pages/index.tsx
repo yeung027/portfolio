@@ -17,7 +17,8 @@ minDesktopWindowWidth = 980;
 type MyProps = {
     ua: any,
     useragent: any,
-    minDesktopWindowWidth: string
+    minDesktopWindowWidth: string,
+    strapiBaseUrl: string
 };
 
 type MyStates = {
@@ -36,6 +37,7 @@ interface IndexPage {
   paymentRef: any
   contactRef: any
   minDesktopWindowWidth: string
+  strapiBaseUrl: string
 }
 
 class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates> 
@@ -46,7 +48,9 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
     const ua  = this.props.ua;
     let useragent: string;
     useragent = this.props.useragent;
-    this.minDesktopWindowWidth = this.props.minDesktopWindowWidth;
+    this.minDesktopWindowWidth  = this.props.minDesktopWindowWidth;
+    this.strapiBaseUrl          = this.props.strapiBaseUrl;
+
     this.state = {
       originIsMobile: ua.isMobile,
       isMobile: ua.isMobile,
@@ -74,7 +78,6 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
     {
         if(this.minDesktopWindowWidth) 
         {
-            
             minDesktopWindowWidth   = parseInt(this.minDesktopWindowWidth);
         }
         else console.warn('CANNOT FIND process.env.minDesktopWindowWidth');
@@ -101,8 +104,9 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
   static async getInitialProps(ctx) 
   {
     return { 
-      useragent: ctx.ua.source ,
-      minDesktopWindowWidth: process.env.minDesktopWindowWidth
+      useragent: ctx.ua.source,
+      minDesktopWindowWidth: process.env.minDesktopWindowWidth,
+      strapiBaseUrl: process.env.strapiBaseUrl
     }
   }//END getInitialProps
 
@@ -153,6 +157,7 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
     return  <>
               <Head>
                 <title>Hei Yeung:Web Developer</title>
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
               </Head>
               {elements}
               
