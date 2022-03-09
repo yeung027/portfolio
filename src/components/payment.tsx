@@ -1,17 +1,19 @@
 import React,{Component} from 'react';
 import styles from '../styles/payment/desktop.module.css'
 import mobileStyles from '../styles/payment/mobile.module.css'
+import Braintree from './braintree'
 
 type MyProps = {
   parent:any
 };
 
 type MyStates = {
-  
+  showDonateBtn: boolean
 };
 
 interface Payment {
   parent: any
+  braintreeRef: any
 }
 
 class Payment extends Component<MyProps, MyStates>
@@ -22,11 +24,22 @@ class Payment extends Component<MyProps, MyStates>
     this.parent = props.parent;
 
     this.state = {
-      
+      showDonateBtn: true
     }//END state
-    
+
+    this.braintreeRef = React.createRef();
+
+    this.donateBtnClick             = this.donateBtnClick.bind(this);
   }//END constructor
 
+  donateBtnClick()
+  {
+    //console.log('donateBtnClick: '+this.braintreeRef.current.state.show);
+    if(this.braintreeRef && this.braintreeRef.current)
+    {
+      this.braintreeRef.current.show();
+    }
+  }//END donateBtnClick
 
   render() 
   {
@@ -43,10 +56,12 @@ class Payment extends Component<MyProps, MyStates>
                 </p>
               </article>
               <div className={this.parent.state.isMobile ? mobileStyles.buttonArea : styles.buttonArea}>
-                <div className={'button'}>
+                <div className={'button'} onClick={this.donateBtnClick}>
                     Donate
                 </div>
               </div>
+
+              <Braintree parent={this} ref={this.braintreeRef} />
             </section>
   }//END render
 
