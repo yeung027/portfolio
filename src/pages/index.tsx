@@ -19,6 +19,7 @@ type MyProps = {
     useragent: any,
     minDesktopWindowWidth: string,
     strapiBaseUrl: string
+    braintreeToken: string
 };
 
 type MyStates = {
@@ -38,6 +39,7 @@ interface IndexPage {
   contactRef: any
   minDesktopWindowWidth: string
   strapiBaseUrl: string
+  braintreeToken: string
 }
 
 class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates> 
@@ -50,6 +52,8 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
     useragent = this.props.useragent;
     this.minDesktopWindowWidth  = this.props.minDesktopWindowWidth;
     this.strapiBaseUrl          = this.props.strapiBaseUrl;
+    this.braintreeToken         = this.props.braintreeToken;
+
 
     this.state = {
       originIsMobile: ua.isMobile,
@@ -106,7 +110,8 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
     return { 
       useragent: ctx.ua.source,
       minDesktopWindowWidth: process.env.minDesktopWindowWidth,
-      strapiBaseUrl: process.env.strapiBaseUrl
+      strapiBaseUrl: process.env.strapiBaseUrl,
+      braintreeToken: process.env.braintreeToken
     }
   }//END getInitialProps
 

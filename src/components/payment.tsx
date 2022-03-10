@@ -38,11 +38,17 @@ class Payment extends Component<MyProps, MyStates>
     if(this.braintreeRef && this.braintreeRef.current)
     {
       this.braintreeRef.current.show();
+      this.setState({ 
+        showDonateBtn: false
+       });
     }
   }//END donateBtnClick
 
   render() 
   {
+    var buttonAreaClass = this.parent.state.isMobile ? mobileStyles.buttonArea : styles.buttonArea;
+        if(!this.state.showDonateBtn)
+          buttonAreaClass = [buttonAreaClass, this.parent.state.isMobile ? mobileStyles.buttonAreaHide : styles.buttonAreaHide].join(' ');
     return  <section className={this.parent.state.isMobile ? mobileStyles.container : styles.container}>
               <div className={this.parent.state.isMobile ? mobileStyles.titles : styles.titles}>
                 <div className={this.parent.state.isMobile ? mobileStyles.titlesInner : styles.titlesInner}>
@@ -55,7 +61,7 @@ class Payment extends Component<MyProps, MyStates>
                 I can make a website with payment gateway, so visitor can shop and pay online.
                 </p>
               </article>
-              <div className={this.parent.state.isMobile ? mobileStyles.buttonArea : styles.buttonArea}>
+              <div className={buttonAreaClass}>
                 <div className={'button'} onClick={this.donateBtnClick}>
                     Donate
                 </div>

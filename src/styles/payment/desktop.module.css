@@ -45,3 +45,8 @@ article.description
     flex-direction: row;
     column-gap: 14px;
 }
+
+.buttonAreaHide
+{
+    display: none;
+}

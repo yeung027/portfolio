@@ -52,3 +52,8 @@ article.description
 {
   margin: 10px 0 0 0;
 }
+
+.buttonAreaHide
+{
+    display: none;
+}

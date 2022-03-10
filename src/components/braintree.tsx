@@ -9,7 +9,7 @@ type MyProps = {
 };
   
 type MyStates = {
-    clientToken: string
+    braintreeToken: string
     show:boolean
 };
   
@@ -26,35 +26,50 @@ class Braintree extends Component<MyProps, MyStates>
         this.parent = props.parent;
 
         this.state = {
-            clientToken: null,
-            show: true
+            braintreeToken: null,
+            show: false
         }//END state
-        
-        this.donate    = this.donate.bind(this);
-        this.show       = this.show.bind(this);
+
+        this.show      = this.show.bind(this);
     }//END 
-
-    async donate()
-    {
-
-    }//END donate
 
     show()
     {
-        console.log('sjow')
+        //console.log('show');
+        if(!this.parent.parent.braintreeToken || this.parent.parent.braintreeToken.trim()=='')
+            console.error('Braintree token not be loaded.');
+        this.setState({ 
+            show: true,
+            braintreeToken: this.parent.parent.braintreeToken
+        });
     }//END show
 
     render() 
     {
-        var circleProgressWrapperClass = this.parent.parent.state.isMobile ? mobileStyles.circleProgressWrapper : styles.circleProgressWrapper;
-        if(this.state.show)
-            circleProgressWrapperClass  = [circleProgressWrapperClass, this.parent.parent.state.isMobile ? mobileStyles.circleProgressShow : styles.circleProgressShow].join(' ');
+        var ele = null;
+        if(!this.state.braintreeToken)
+        {
+            var circleProgressWrapperClass = this.parent.parent.state.isMobile ? mobileStyles.circleProgressWrapper : styles.circleProgressWrapper;
+            if(this.state.show)
+            {
+                circleProgressWrapperClass  = [circleProgressWrapperClass, this.parent.parent.state.isMobile ? mobileStyles.circleProgressShow : styles.circleProgressShow].join(' ');
+            }//END if show
+
+            ele =   <div className={circleProgressWrapperClass} >
+                        <CircularProgress size={30}/>
+                    </div>
+        }//END if null token
+        else
+        {
+            ele =   <DropIn
+                        options={{ authorization: this.state.braintreeToken }}
+                        onInstance={(instance) => (this.instance = instance)}
+                    />
+        }//END else token loaded
 
 
         return  <>
-                    <div className={circleProgressWrapperClass} >
-                        <CircularProgress size={30}/>
-                    </div>
+                    {ele}
                 </>
     }//END render
 
