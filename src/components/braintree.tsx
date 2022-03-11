@@ -3,6 +3,7 @@ import styles from '../styles/braintree/desktop.module.css'
 import mobileStyles from '../styles/braintree/mobile.module.css'
 import DropIn from "braintree-web-drop-in-react";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import axios from 'axios'
 
 type MyProps = {
     parent:any
@@ -37,6 +38,7 @@ class Braintree extends Component<MyProps, MyStates>
 
         this.show                   = this.show.bind(this);
         this.checkUILoadStatus      = this.checkUILoadStatus.bind(this);
+        this.submitOnClick          = this.submitOnClick.bind(this);
     }//END 
 
     show()
@@ -51,6 +53,47 @@ class Braintree extends Component<MyProps, MyStates>
 
         this.checkUILoadStatus();
     }//END show
+
+    submitSuccess(response)
+    {
+      console.log(response);
+    }//END submitSuccess
+
+    submitError(error)
+    {
+      console.error(error);
+      
+    }//END submitError
+
+    async submitOnClick()
+    {
+      var self = this;
+      const { nonce } = await this.instance.requestPaymentMethod();
+      console.log('nonce: '+nonce);
+
+      axios.post('/api/payment/submit', {
+        data:{nonce: nonce}
+      })
+      .then(function (response) {
+        self.submitSuccess(response);
+      })
+      .catch(function (error) {
+        self.submitError(error);
+      });
+    }//END submitOnClick
+
+    componentDidMount()
+    {
+      if(!this.state.show && (!this.dropinRef || !this.dropinRef.current || !this.dropinRef.current.wrapper || !this.dropinRef.current.wrapper.hasChildNodes()) )
+      {
+        this.setState({ 
+          show: false,
+        });
+        this.parent.setState({ 
+          showDonateBtn: true,
+        });
+      }
+    }//END componentDidMount
 
     checkUILoadStatus()
     {
@@ -76,13 +119,21 @@ class Braintree extends Component<MyProps, MyStates>
     {
         var progressEle = null;
         var dropinUI    = null;
+        var submit      = null;
         if(this.state.show && this.state.braintreeToken)
         {
-          dropinUI = <DropIn
-                        options={{ authorization: this.state.braintreeToken }}
-                        onInstance={(instance) => (this.instance = instance)}
-                        ref={this.dropinRef}
-                      />
+          if(this.state.uiLoaded)
+            submit  = <div className={'button'} onClick={this.submitOnClick}>
+                        Submit & Donate
+                      </div>
+          dropinUI =  <>
+                        <DropIn
+                          options={{ authorization: this.state.braintreeToken }}
+                          onInstance={(instance) => (this.instance = instance)}
+                          ref={this.dropinRef}
+                        />
+                        {submit}
+                      </>
         }
 
         if(this.state.show)
@@ -93,8 +144,8 @@ class Braintree extends Component<MyProps, MyStates>
                 circleProgressWrapperClass  = [circleProgressWrapperClass, this.parent.parent.state.isMobile ? mobileStyles.circleProgressShow : styles.circleProgressShow].join(' ');
             }//END if not uiLoaded
             progressEle =   <div className={circleProgressWrapperClass} >
-                        <CircularProgress size={30}/>
-                    </div>
+                                <CircularProgress size={30}/>
+                            </div>
         }
 
         return  <>
