@@ -4,6 +4,10 @@ import mobileStyles from '../styles/braintree/mobile.module.css'
 import DropIn from "braintree-web-drop-in-react";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import axios from 'axios'
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+import Slide from '@material-ui/core/Slide';
+import Grow from '@material-ui/core/Grow';
 
 type MyProps = {
     parent:any
@@ -13,6 +17,9 @@ type MyStates = {
     braintreeToken: string
     show: boolean
     uiLoaded: boolean
+    snackOpen: boolean
+    snackType: any
+    snackMsg: string
 };
   
 interface Braintree {
@@ -31,7 +38,10 @@ class Braintree extends Component<MyProps, MyStates>
         this.state = {
             braintreeToken: null,
             show: false,
-            uiLoaded: false
+            uiLoaded: false,
+            snackOpen: false,
+            snackType: 'success',
+            snackMsg: 'null'
         }//END state
 
         this.dropinRef = React.createRef();
@@ -39,7 +49,33 @@ class Braintree extends Component<MyProps, MyStates>
         this.show                   = this.show.bind(this);
         this.checkUILoadStatus      = this.checkUILoadStatus.bind(this);
         this.submitOnClick          = this.submitOnClick.bind(this);
+        this.snackOnClick             = this.snackOnClick.bind(this);
+        this.getSnackTransition       = this.getSnackTransition.bind(this);
+        this.snackOnClose             = this.snackOnClose.bind(this);
+        this.submitSuccess            = this.submitSuccess.bind(this);
+        this.submitError              = this.submitError.bind(this);
     }//END 
+
+    snackOnClose()
+    {
+      this.setState({ 
+        snackOpen: false,
+      });
+    }//END snackOnClose
+
+    getSnackTransition(props) {
+      if(this.state.snackType=='success')
+        return <Grow {...props} />
+      else
+        return <Grow {...props} />
+    }//END getSnackTransition
+
+    snackOnClick(e)
+    {
+      this.setState({ 
+        snackOpen: false,
+      });
+    }//END snackOnClick
 
     show()
     {
@@ -54,14 +90,47 @@ class Braintree extends Component<MyProps, MyStates>
         this.checkUILoadStatus();
     }//END show
 
+
     submitSuccess(response)
     {
-      console.log(response);
+      var self = this;
+      var clientToken = null;
+      if(response.data != null) clientToken = response.data.clientToken;
+      var success = false;
+      if(response.data != null && response.data.success != null)
+        success = Boolean(response.data.success);
+      //console.log('okok....'+Boolean(response.data.success));
+      if(success)
+      {
+        //console.log('okok....');
+        this.setState({ 
+          snackOpen: true,
+          snackType: 'success',
+          snackMsg: 'Success! Thanks for your donation'
+        });
+      }
+      else
+      {
+        this.setState({ 
+          snackOpen: true,
+          snackType: 'error',
+          snackMsg: 'Something went wrong, please try again later, sorry for the inconvenience.'
+        });
+      }
+      
     }//END submitSuccess
 
     submitError(error)
     {
-      console.error(error);
+      var message = 'Something went wrong, please try again later, sorry for the inconvenience.';
+      if(error.response.data != null && error.response.data.message != null && error.response.data.message.trim() !='')
+        message = error.response.data.message;
+      console.error(error.response.data.message);
+      this.setState({ 
+        snackOpen: true,
+        snackType: 'error',
+        snackMsg: message
+      });
       
     }//END submitError
 
@@ -69,7 +138,6 @@ class Braintree extends Component<MyProps, MyStates>
     {
       var self = this;
       const { nonce } = await this.instance.requestPaymentMethod();
-      console.log('nonce: '+nonce);
 
       axios.post('/api/payment/submit', {
         data:{nonce: nonce}
@@ -151,6 +219,21 @@ class Braintree extends Component<MyProps, MyStates>
         return  <>
                     {progressEle}
                     {dropinUI}
+                    <Snackbar 
+                      open={this.state.snackOpen} 
+                      autoHideDuration={6000} 
+                      onClose={this.snackOnClose}
+                      onClick={this.snackOnClick}
+                      TransitionComponent={this.getSnackTransition}
+                    >
+                      <MuiAlert 
+                        elevation={6} 
+                        variant="filled"
+                        severity={this.state.snackType}
+                      >
+                        {this.state.snackMsg}
+                      </MuiAlert>
+                    </Snackbar>
                 </>
     }//END render
 
