@@ -10,11 +10,13 @@ type MyProps = {
   
 type MyStates = {
     braintreeToken: string
-    show:boolean
+    show: boolean
+    uiLoaded: boolean
 };
   
 interface Braintree {
     parent: any
+    dropinRef: any
 }
   
 class Braintree extends Component<MyProps, MyStates>
@@ -27,49 +29,77 @@ class Braintree extends Component<MyProps, MyStates>
 
         this.state = {
             braintreeToken: null,
-            show: false
+            show: false,
+            uiLoaded: false
         }//END state
 
-        this.show      = this.show.bind(this);
+        this.dropinRef = React.createRef();
+
+        this.show                   = this.show.bind(this);
+        this.checkUILoadStatus      = this.checkUILoadStatus.bind(this);
     }//END 
 
     show()
     {
         //console.log('show');
         if(!this.parent.parent.braintreeToken || this.parent.parent.braintreeToken.trim()=='')
-            console.error('Braintree token not be loaded.');
+            return console.error('Braintree token not be loaded.');
         this.setState({ 
             show: true,
             braintreeToken: this.parent.parent.braintreeToken
         });
+
+        this.checkUILoadStatus();
     }//END show
+
+    checkUILoadStatus()
+    {
+        if(this.dropinRef && this.dropinRef.current && this.dropinRef.current.wrapper && this.dropinRef.current.wrapper.hasChildNodes())
+        {
+          this.setState({ 
+            uiLoaded: true
+          });
+          //console.log('yeah ^^');
+          return true;
+        }
+
+        setTimeout(
+          function() {
+            this.checkUILoadStatus();
+          }
+          .bind(this),
+          50
+        );
+    }//END checkUILoadStatus
 
     render() 
     {
-        var ele = null;
-        if(!this.state.braintreeToken)
+        var progressEle = null;
+        var dropinUI    = null;
+        if(this.state.show && this.state.braintreeToken)
         {
-            var circleProgressWrapperClass = this.parent.parent.state.isMobile ? mobileStyles.circleProgressWrapper : styles.circleProgressWrapper;
-            if(this.state.show)
-            {
-                circleProgressWrapperClass  = [circleProgressWrapperClass, this.parent.parent.state.isMobile ? mobileStyles.circleProgressShow : styles.circleProgressShow].join(' ');
-            }//END if show
-
-            ele =   <div className={circleProgressWrapperClass} >
-                        <CircularProgress size={30}/>
-                    </div>
-        }//END if null token
-        else
-        {
-            ele =   <DropIn
+          dropinUI = <DropIn
                         options={{ authorization: this.state.braintreeToken }}
                         onInstance={(instance) => (this.instance = instance)}
-                    />
-        }//END else token loaded
+                        ref={this.dropinRef}
+                      />
+        }
 
+        if(this.state.show)
+        {
+            var circleProgressWrapperClass = this.parent.parent.state.isMobile ? mobileStyles.circleProgressWrapper : styles.circleProgressWrapper;
+            if(!this.state.uiLoaded)
+            {
+                circleProgressWrapperClass  = [circleProgressWrapperClass, this.parent.parent.state.isMobile ? mobileStyles.circleProgressShow : styles.circleProgressShow].join(' ');
+            }//END if not uiLoaded
+            progressEle =   <div className={circleProgressWrapperClass} >
+                        <CircularProgress size={30}/>
+                    </div>
+        }
 
         return  <>
-                    {ele}
+                    {progressEle}
+                    {dropinUI}
                 </>
     }//END render
 
