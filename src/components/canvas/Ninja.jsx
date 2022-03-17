@@ -2,7 +2,7 @@ import React, { Suspense, Component } from 'react'
 import { Canvas, useLoader, useFrame } from '@react-three/fiber'
 import { PerspectiveCamera, Preload } from '@react-three/drei'
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { Vector3, MeshStandardMaterial, AnimationMixer, LoopOnce } from 'three';
+import { Vector3, MeshStandardMaterial, AnimationMixer, LoopPingPong } from 'three';
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import styles from '../../styles/canvas/ninja/desktop.module.css'
 import mobileStyles from '../../styles/canvas/ninja/mobile.module.css'
@@ -58,6 +58,20 @@ export default class Ninja extends Component
     const that = this;
 
     window.addEventListener("scroll", function(e) { that.playNinjaAnim() }); 
+
+    setTimeout(
+      function () {
+        if(this.modelRef && this.modelRef.current && !this.modelRef.current.state.animationPlaying)
+        {
+          //console.log('this.modelRef.current: '+this.modelRef.current.state.animationPlaying);
+          that.playNinjaAnim();
+        }
+        
+      }
+        .bind(this),
+      3000
+    );
+
   }//END componentDidMount
 
   render()
@@ -190,9 +204,11 @@ class Model extends Component
 
   mixerFinished()
   {
-      console.log('dsad');
-      this.state.animationAction.stop();
-      this.state.animationAction.startAt ( 1000 );
+      //console.log('dsad');
+      //this.state.animationAction.reset();
+     // this.state.animationAction.startAt ( 0.7 );
+      //this.state.animationAction.reset();
+     // this.state.animationAction.fadeIn(2);
       //this.state.animationAction.play();
   }//END mixerFinished
 
@@ -204,10 +220,18 @@ class Model extends Component
       if(this.state.animationAction == null)
         this.state.animationAction = this.state.mixer.clipAction(gltf.animations[1]);
 
-      this.state.animationAction.setLoop(LoopOnce);
+      this.state.animationAction.setLoop(LoopPingPong);
       this.state.animationAction.clampWhenFinished = true;
       this.state.mixer.addEventListener( 'finished', this.mixerFinished );
-      this.state.animationAction.play();
+      this.state.animationAction.startAt(0.015).play();
+
+      this.setState({ 
+        animationPlaying: true
+      });
+
+      //this.state.animationAction.startAt ( 100 );
+      
+      //this.state.animationAction.play();
     }
     else
     {
