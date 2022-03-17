@@ -223,7 +223,9 @@ class Model extends Component
         });
 
       this.state.animationAction.setLoop(LoopPingPong);
-      this.state.animationAction.clampWhenFinished = true;
+      this.state.animationAction.setState({ 
+        clampWhenFinished: true
+      });
       this.state.mixer.addEventListener( 'finished', this.mixerFinished );
       this.state.animationAction.startAt(0.015).play();
 
