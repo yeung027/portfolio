@@ -47,10 +47,17 @@ class TopMenu extends Component<MyProps, MyStates>
       mobileMenuOpen: !this.state.mobileMenuOpen
      });
     if(this.mobileMenuRef && this.mobileMenuRef.current)
-    this.mobileMenuRef.current.setState({ 
-      isAnimating:true,
-      open: !this.mobileMenuRef.current.state.open
-     });
+    {
+      this.mobileMenuRef.current.setState({ 
+        isAnimating:true,
+        open: !this.mobileMenuRef.current.state.open
+      });
+
+      this.parent.setState({ 
+        bodyFixed: !this.state.mobileMenuOpen
+      });
+    }
+
   }//END menuButtonClick
 
   menuButtonAnimationEnd()

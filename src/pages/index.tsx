@@ -26,7 +26,8 @@ type MyStates = {
     originIsMobile: any,
     isMobile: boolean,
     isTablet: boolean,
-    useragent: string
+    useragent: string,
+    bodyFixed: boolean
 };
 
 
@@ -60,6 +61,7 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
       isMobile: ua.isMobile,
       isTablet: ua.isTablet,
       useragent: useragent,
+      bodyFixed: false
     }//END state
 
     this.topMenuRef = React.createRef();
@@ -133,7 +135,11 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
 
   render() 
   {
-      let elements  = <div className={this.state.isMobile? mobileStyles.outer : styles.outer}> 
+
+      let outerClass  = this.state.isMobile? mobileStyles.outer : styles.outer;
+      if(this.state.bodyFixed)
+        outerClass = [outerClass, this.state.isMobile? mobileStyles.bodyFixed : styles.bodyFixed].join(' ');
+      let elements  = <div className={outerClass}> 
       <div className={this.state.isMobile? mobileStyles.container : styles.container}>
         <TopMenu ref={this.topMenuRef} parent={this} />
         <Introduction ref={this.introductionRef} parent={this} />
@@ -146,7 +152,7 @@ class IndexPage extends Component<MyProps & WithUserAgentProps, MyStates>
 
       if(this.state.isTablet)
       {
-        elements  = <nav><div className={this.state.isMobile? mobileStyles.outer : styles.outer}> 
+        elements  = <nav><div className={outerClass}> 
       <div className={this.state.isMobile? mobileStyles.container : styles.container}>
         <TopMenu ref={this.topMenuRef} parent={this} />
         <Introduction ref={this.introductionRef} parent={this} />

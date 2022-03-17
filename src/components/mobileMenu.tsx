@@ -46,6 +46,10 @@ class MobileMenu extends Component<MyProps, MyStates>
         menuIconAnim: true,
         mobileMenuOpen: false
        });
+
+       this.parent.parent.setState({ 
+        bodyFixed: false
+       });
     }
   }//END onclick
 
@@ -62,6 +66,10 @@ class MobileMenu extends Component<MyProps, MyStates>
         mobileMenuOpen: false
        });
      }
+
+     this.parent.parent.setState({ 
+      bodyFixed: false
+     });
   }//END emptyAreaClick
 
   onWrapperAnimationEnd()
