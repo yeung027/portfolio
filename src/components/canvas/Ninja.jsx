@@ -2,7 +2,7 @@ import React, { Suspense, Component } from 'react'
 import { Canvas, useLoader, useFrame } from '@react-three/fiber'
 import { PerspectiveCamera, Preload } from '@react-three/drei'
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { Vector3, MeshStandardMaterial, AnimationMixer } from 'three';
+import { Vector3, MeshStandardMaterial, AnimationMixer, LoopOnce } from 'three';
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import styles from '../../styles/canvas/ninja/desktop.module.css'
 import mobileStyles from '../../styles/canvas/ninja/mobile.module.css'
@@ -91,7 +91,8 @@ class Model extends Component
     //console.log('ninja parent22 : '+this.parent)
     this.state = {
       mixer: null,
-      animationPlaying: false
+      animationPlaying: false,
+      animationAction: null
     }//END state
       
     this.isMaterialApplied = false;
@@ -102,6 +103,7 @@ class Model extends Component
     this.setMixer             = this.setMixer.bind(this);
     this.retrySetMixer        = this.retrySetMixer.bind(this);
     this.playAnim             = this.playAnim.bind(this);
+    this.mixerFinished        = this.mixerFinished.bind(this);
     
   }//END constructor
     
@@ -186,14 +188,26 @@ class Model extends Component
     //this.playAnim();
   }//END componentDidMount
 
+  mixerFinished()
+  {
+      console.log('dsad');
+      this.state.animationAction.stop();
+      this.state.animationAction.startAt ( 1000 );
+      //this.state.animationAction.play();
+  }//END mixerFinished
 
   playAnim()
   {
-    //console.log('playAnim');
+    
     if (this.state.mixer != null)
     {
+      if(this.state.animationAction == null)
+        this.state.animationAction = this.state.mixer.clipAction(gltf.animations[1]);
 
-      this.state.mixer.clipAction(gltf.animations[1]).play();
+      this.state.animationAction.setLoop(LoopOnce);
+      this.state.animationAction.clampWhenFinished = true;
+      this.state.mixer.addEventListener( 'finished', this.mixerFinished );
+      this.state.animationAction.play();
     }
     else
     {
