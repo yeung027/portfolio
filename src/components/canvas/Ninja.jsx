@@ -218,7 +218,9 @@ class Model extends Component
     if (this.state.mixer != null)
     {
       if(this.state.animationAction == null)
-        this.state.animationAction = this.state.mixer.clipAction(gltf.animations[1]);
+        this.setState({ 
+          animationAction: this.state.mixer.clipAction(gltf.animations[1])
+        });
 
       this.state.animationAction.setLoop(LoopPingPong);
       this.state.animationAction.clampWhenFinished = true;
