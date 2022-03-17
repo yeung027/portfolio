@@ -30,7 +30,24 @@ class MobileMenu extends Component<MyProps, MyStates>
     
     this.emptyAreaClick = this.emptyAreaClick.bind(this);
     this.onWrapperAnimationEnd = this.onWrapperAnimationEnd.bind(this);
+    this.onclick = this.onclick.bind(this);
   }//END constructor
+
+  onclick()
+  {
+    if(this.state.open && !this.state.isAnimating)
+    {
+      this.setState({ 
+        isAnimating: true,
+        open:false
+       });
+
+       this.parent.setState({ 
+        menuIconAnim: true,
+        mobileMenuOpen: false
+       });
+    }
+  }//END onclick
 
   emptyAreaClick()
   {
@@ -73,7 +90,7 @@ class MobileMenu extends Component<MyProps, MyStates>
 
     return  <div className={containerClass}>
         
-              <div className={wrapperClass} onAnimationEnd={this.onWrapperAnimationEnd}>
+              <div className={wrapperClass} onAnimationEnd={this.onWrapperAnimationEnd} onClick={this.onclick}>
                 <div className={mobileStyles.title}>
                   Hei Yeung
                 </div>
@@ -81,16 +98,16 @@ class MobileMenu extends Component<MyProps, MyStates>
                   <Link href="/">Home</Link>
                 </div>
                 <div className={mobileStyles.item}>
-                  <Link href="/">About</Link>
+                  <Link href="/#introduction">About</Link>
                 </div>
                 <div className={mobileStyles.item}>
-                  <Link href="/">Skills</Link>
+                  <Link href="/#skills">Skills</Link>
                 </div>
                 <div className={mobileStyles.item}>
-                  <Link href="/">Work</Link>
+                  <Link href="/#work">Work</Link>
                 </div>
                 <div className={mobileStyles.item}>
-                  <Link href="/">Contact</Link>
+                  <Link href="/#contact">Contact</Link>
                 </div>
               </div>
 

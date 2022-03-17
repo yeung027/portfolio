@@ -32,7 +32,7 @@ class Work extends Component<MyProps, MyStates>
 
   render() 
   {
-    return  <section className={this.parent.state.isMobile ? mobileStyles.container : styles.container}>
+    return  <section className={this.parent.state.isMobile ? mobileStyles.container : styles.container} id ='work'>
               <div className={this.parent.state.isMobile ? mobileStyles.titles : styles.titles}>
                 <div className={this.parent.state.isMobile ? mobileStyles.titlesInner : styles.titlesInner}>
                   <h1 className={this.parent.state.isMobile ? mobileStyles.h11 : styles.h11}>Work</h1>

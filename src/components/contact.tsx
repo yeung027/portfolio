@@ -246,7 +246,9 @@ class Contact extends Component<MyProps, MyStates>
     }
 
 
-    return  <section className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.container : styles.container}>
+    return  <section className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.container : styles.container}
+              id='contact'
+            >
               <Snackbar 
                 open={this.state.snackOpen} 
                 autoHideDuration={6000} 

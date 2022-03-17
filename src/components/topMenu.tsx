@@ -85,16 +85,16 @@ class TopMenu extends Component<MyProps, MyStates>
                   <Link href="/">Home</Link>
                 </div>
                 <div className={this.parent.state.isMobile ? [mobileStyles.item, mobileStyles.itemRight].join(' ') : [styles.item, styles.itemRight].join(' ')}>
-                  <Link href="/">About</Link>
+                  <Link href="/#introduction">About</Link>
                 </div>
                 <div className={this.parent.state.isMobile ? [mobileStyles.item, mobileStyles.itemRight].join(' ') : [styles.item, styles.itemRight].join(' ')}>
-                  <Link href="/">Skills</Link>
+                  <Link href="/#skills">Skills</Link>
                 </div>
                 <div className={this.parent.state.isMobile ? [mobileStyles.item, mobileStyles.itemRight].join(' ') : [styles.item, styles.itemRight].join(' ')}>
-                  <Link href="/">Work</Link>
+                  <Link href="/#work">Work</Link>
                 </div>
                 <div className={this.parent.state.isMobile ? [mobileStyles.item, mobileStyles.itemRight, 'button'].join(' ') : [styles.item, styles.itemRight, 'button'].join(' ')}>
-                  <Link href="/">Contact</Link>
+                  <Link href="/#contact">Contact</Link>
                 </div>
                 <div className={menuIconAnim} onClick={this.menuButtonClick} onAnimationEnd={this.menuButtonAnimationEnd}>
                   <div className={mobileStyles.menuIconOuter}>

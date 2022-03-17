@@ -39,7 +39,7 @@ class Introduction extends Component<MyProps, MyStates>
 
   render() 
   {
-    return  <section className={this.parent.state.isMobile ? mobileStyles.container : styles.container}>
+    return  <section className={this.parent.state.isMobile ? mobileStyles.container : styles.container} id='introduction'>
               <div className={this.parent.state.isMobile ? [mobileStyles.item, mobileStyles.left].join(' ') : [styles.item, styles.left].join(' ')}>
                 <div className={this.parent.state.isMobile ? mobileStyles.titles : styles.titles}>
                   <div className={this.parent.state.isMobile ? mobileStyles.titlesInner : styles.titlesInner}>

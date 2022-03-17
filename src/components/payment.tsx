@@ -49,7 +49,7 @@ class Payment extends Component<MyProps, MyStates>
     var buttonAreaClass = this.parent.state.isMobile ? mobileStyles.buttonArea : styles.buttonArea;
         if(!this.state.showDonateBtn)
           buttonAreaClass = [buttonAreaClass, this.parent.state.isMobile ? mobileStyles.buttonAreaHide : styles.buttonAreaHide].join(' ');
-    return  <section className={this.parent.state.isMobile ? mobileStyles.container : styles.container}>
+    return  <section className={this.parent.state.isMobile ? mobileStyles.container : styles.container} id='payment'>
               <div className={this.parent.state.isMobile ? mobileStyles.titles : styles.titles}>
                 <div className={this.parent.state.isMobile ? mobileStyles.titlesInner : styles.titlesInner}>
                   <h1 className={this.parent.state.isMobile ? mobileStyles.h11 : styles.h11}>Payment API</h1>
