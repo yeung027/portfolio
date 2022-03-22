@@ -8,6 +8,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import Slide from '@material-ui/core/Slide';
 import Grow from '@material-ui/core/Grow';
+import Link from 'next/link'
 
 type MyProps = {
     parent:any
@@ -187,13 +188,28 @@ class Braintree extends Component<MyProps, MyStates>
     {
         var progressEle = null;
         var dropinUI    = null;
+        var noticeEle   = null;
         var submit      = null;
         if(this.state.show && this.state.braintreeToken)
         {
           if(this.state.uiLoaded)
+          {
             submit  = <div className={'button'} onClick={this.submitOnClick}>
                         Submit & Donate
                       </div>
+            noticeEle   = <div 
+                            className={this.parent.parent.state.isMobile ? mobileStyles.notice : styles.notice}
+                          >
+                            <p>Because of some reasons,  I only have a sandbox account, so the payment dialog below only for demo, no real transaction at all, so you can play around with it :)</p>
+                            <p>Also you may need some dummy credit-cards for test:</p>
+                            <p>
+                              <Link href="https://developer.paypal.com/braintree/docs/guides/credit-cards/testing-go-live/node">
+                                <a target={'_blank'}>Testing Data</a>
+                              </Link>
+                            </p>
+                          </div>
+            
+          }
           dropinUI =  <>
                         <DropIn
                           options={{ authorization: this.state.braintreeToken }}
@@ -217,6 +233,7 @@ class Braintree extends Component<MyProps, MyStates>
         }
 
         return  <>
+                    {noticeEle}
                     {progressEle}
                     {dropinUI}
                     <Snackbar 

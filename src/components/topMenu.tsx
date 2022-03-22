@@ -88,9 +88,7 @@ class TopMenu extends Component<MyProps, MyStates>
                 <div className={this.parent.state.isMobile ? [mobileStyles.item].join(' ') : [styles.item].join(' ')}>Hei Yeung</div>
               </div>
               <div className={this.parent.state.isMobile ? [mobileStyles.group, mobileStyles.rightGroup].join(' ') : [styles.group, styles.rightGroup].join(' ')}>
-                <div className={this.parent.state.isMobile ? [mobileStyles.item, mobileStyles.itemRight].join(' ') : [styles.item, styles.itemRight].join(' ')}>
-                  <Link href="/">Home</Link>
-                </div>
+              
                 <div className={this.parent.state.isMobile ? [mobileStyles.item, mobileStyles.itemRight].join(' ') : [styles.item, styles.itemRight].join(' ')}>
                   <Link href="/#introduction">About</Link>
                 </div>
@@ -99,6 +97,9 @@ class TopMenu extends Component<MyProps, MyStates>
                 </div>
                 <div className={this.parent.state.isMobile ? [mobileStyles.item, mobileStyles.itemRight].join(' ') : [styles.item, styles.itemRight].join(' ')}>
                   <Link href="/#work">Work</Link>
+                </div>
+                <div className={this.parent.state.isMobile ? [mobileStyles.item, mobileStyles.itemRight].join(' ') : [styles.item, styles.itemRight].join(' ')}>
+                  <Link href="/#payment">Donate</Link>
                 </div>
                 <div className={this.parent.state.isMobile ? [mobileStyles.item, mobileStyles.itemRight, 'button'].join(' ') : [styles.item, styles.itemRight, 'button'].join(' ')}>
                   <Link href="/#contact">Contact</Link>

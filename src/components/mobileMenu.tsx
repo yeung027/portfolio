@@ -115,6 +115,9 @@ class MobileMenu extends Component<MyProps, MyStates>
                   <Link href="/#work">Work</Link>
                 </div>
                 <div className={mobileStyles.item}>
+                  <Link href="/#payment">Donate</Link>
+                </div>
+                <div className={mobileStyles.item}>
                   <Link href="/#contact">Contact</Link>
                 </div>
               </div>
