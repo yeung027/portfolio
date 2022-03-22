@@ -128,7 +128,7 @@ export default function Error() {
 
       </style>
 
-      <a href={'www.iloveh3k.com'}>
+      <a>
 
       <header className={styles.top_header}>
 
@@ -188,7 +188,7 @@ export default function Error() {
 
           <h1 className={styles.message__title}>Page Not Found</h1>
 
-          <p className={styles.message__text}>We're sorry, the page you were looking for isn't found here. The link you followed may either be broken or no longer exists. Please try again, or take a look at our.</p>
+          <p className={styles.message__text}>We&apos;re sorry, the page you were looking for isn&apos;t found here. The link you followed may either be broken or no longer exists. Please try again, or take a look at our.</p>
 
         </div>
 
