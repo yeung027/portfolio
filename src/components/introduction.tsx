@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import dynamic from 'next/dynamic'
 import styles from '../styles/introduction/desktop.module.css'
 import mobileStyles from '../styles/introduction/mobile.module.css'
+import Image from 'next/image'
 
 const Ninja = dynamic(() => import('@/components/canvas/Ninja'), {
   ssr: false,
@@ -63,7 +64,10 @@ class Introduction extends Component<MyProps, MyStates>
                 </article>
               </div>
               <div className={this.parent.state.isMobile ? [mobileStyles.item, mobileStyles.right].join(' ') : [styles.item, styles.right].join(' ')}>
-                <Ninja parent={this} ref={this.ninjaRef} />
+                {/*<Ninja parent={this} ref={this.ninjaRef} />*/}
+                <div className={this.parent.state.isMobile ? mobileStyles.avatar : styles.avatar}>
+                  <Image src="/introduction/avatar.png" alt="me" width="288" height="288" />
+                </div>
               </div>
             </section>
   }//END render

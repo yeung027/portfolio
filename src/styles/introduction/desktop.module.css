@@ -46,3 +46,8 @@ article.description
     font-weight: 500;
     margin: 20px 57px 0 0;
 }
+
+.avatar
+{
+    clip-path: circle(50% at 50% 50%)!important;
+}
