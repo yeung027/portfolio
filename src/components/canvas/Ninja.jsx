@@ -221,21 +221,28 @@ class Model extends Component
         this.setState({ 
           animationAction: this.state.mixer.clipAction(gltf.animations[1])
         });
-
-      this.state.animationAction.setLoop(LoopPingPong);
-      this.state.animationAction.setState({ 
-        clampWhenFinished: true
-      });
-      this.state.mixer.addEventListener( 'finished', this.mixerFinished );
-      this.state.animationAction.startAt(0.015).play();
+      
+      //this.state.animationAction.setLoop(LoopPingPong);
+      //this.state.animationAction.setState({ 
+      //  clampWhenFinished: true
+      //});
+      //this.state.mixer.addEventListener( 'finished', this.mixerFinished );
+      //this.state.animationAction.startAt(0.015).play();
 
       this.setState({ 
         animationPlaying: true
       });
 
       //this.state.animationAction.startAt ( 100 );
+      setTimeout(
+        function () {
+
+          this.state.animationAction.play();
+        }
+          .bind(this),
+        100
+      );
       
-      //this.state.animationAction.play();
     }
     else
     {
