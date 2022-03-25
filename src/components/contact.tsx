@@ -8,6 +8,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import Slide from '@material-ui/core/Slide';
 import Grow from '@material-ui/core/Grow';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 type MyProps = {
   parent:any
@@ -23,6 +24,7 @@ type MyStates = {
   snackOpen: boolean
   snackType: any
   snackMsg: string
+  submitting: boolean
 };
 
 interface Contact {
@@ -48,7 +50,8 @@ class Contact extends Component<MyProps, MyStates>
       messageErrorMsg: null,
       snackOpen: false,
       snackType: 'success',
-      snackMsg: null
+      snackMsg: null,
+      submitting: false,
     }//END state
     
     this.nameRef = React.createRef();
@@ -112,7 +115,8 @@ class Contact extends Component<MyProps, MyStates>
   onInputKeyUp(e)
   {
     //console.log('onInputKeyUp');
-    this.validation();
+    if(!this.state.submitting)
+      this.validation();
   }//END onInputKeyUp
 
   setNameErrorMessage(visible, msg)
@@ -193,6 +197,10 @@ class Contact extends Component<MyProps, MyStates>
     var email     = this.emailRef.current ? this.emailRef.current.value : null;
     var message   = this.messageRef.current ? this.messageRef.current.value : null;
     
+    this.setState({ 
+      submitting: true,
+    });
+
     axios.post('/api/contact/submit', {
       data:{name: name, email: email, message: message}
     })
@@ -202,6 +210,9 @@ class Contact extends Component<MyProps, MyStates>
     })
     .catch(function (error) {
       self.submitError(error);
+      this.setState({ 
+        submitting: false,
+      });
     });
 
 
@@ -246,6 +257,15 @@ class Contact extends Component<MyProps, MyStates>
       messageErrorClass  = [messageErrorClass, this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.noError : styles.noError].join(' ');
     }
 
+    let progressEle = null;
+    let circleProgressWrapperClass = this.parent.state.isMobile ? mobileStyles.circleProgressWrapper : styles.circleProgressWrapper;
+    if(this.state.submitting)
+      progressEle =   <div className={circleProgressWrapperClass} >
+                        <CircularProgress size={25}/>
+                      </div>
+    
+    let submitBtnClass  = 'button';
+    if(this.state.submitting) submitBtnClass = [submitBtnClass, 'submitting'].join(' ');
 
     return  <section className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.container : styles.container}
               id='contact'
@@ -329,7 +349,16 @@ class Contact extends Component<MyProps, MyStates>
                           <form action="#" method="POST">
                             <div className={nameColumnClass}>
                               <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.input : styles.input}>
-                                <input id="name" type="text" autoComplete="name" ref={this.nameRef} placeholder='Name' required onKeyUp={this.onInputKeyUp} />
+                                <input 
+                                  id="name" 
+                                  type="text" 
+                                  autoComplete="name" 
+                                  ref={this.nameRef} 
+                                  placeholder='Name' 
+                                  required 
+                                  onKeyUp={this.onInputKeyUp} 
+                                  readOnly={this.state.submitting}
+                                />
                               </div>
                               <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.star : styles.star}>*</div>
                             </div>
@@ -338,7 +367,16 @@ class Contact extends Component<MyProps, MyStates>
                             </div>
                             <div className={emailColumnClass}>
                               <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.input : styles.input}>
-                                <input id="email" type="text" autoComplete="email" ref={this.emailRef} placeholder='email' required onKeyUp={this.onInputKeyUp} />
+                                <input 
+                                  id="email" 
+                                  type="text" 
+                                  autoComplete="email" 
+                                  ref={this.emailRef} 
+                                  placeholder='email' 
+                                  required 
+                                  onKeyUp={this.onInputKeyUp} 
+                                  readOnly={this.state.submitting}
+                                />
                               </div>
                               <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.star : styles.star}>*</div>
                             </div>
@@ -347,15 +385,25 @@ class Contact extends Component<MyProps, MyStates>
                             </div>
                             <div className={messageColumnClass}>
                               <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.input : styles.input}>
-                                <textarea id="message" ref={this.messageRef} placeholder='Message' required onKeyUp={this.onInputKeyUp} />
+                                <textarea 
+                                  id="message" 
+                                  ref={this.messageRef} 
+                                  placeholder='Message' 
+                                  required 
+                                  onKeyUp={this.onInputKeyUp} 
+                                  readOnly={this.state.submitting}
+                                />
                               </div>
                               <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.star : styles.star}>*</div>
                             </div>
                             <div className={messageErrorClass}>
                             {this.state.messageErrorMsg}
                             </div>
-                            <div className={'button'} onClick={this.sendOnClick}>
-                              Send
+                            <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.submitArea : styles.submitArea}>
+                              <div className={submitBtnClass} onClick={this.sendOnClick}>
+                                Send
+                              </div>
+                              {progressEle}
                             </div>
                           </form>
                         </div>

@@ -200,3 +200,16 @@ nav .formColumnWrapper
 {
   margin-top: 16px;
 }
+
+.submitArea
+{
+  display: flex;
+  flex-direction: row;
+}
+
+
+.circleProgressWrapper
+{
+  display: inline-flex;
+  margin:0 0 0 16px;
+}

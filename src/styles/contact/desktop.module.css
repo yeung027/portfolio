@@ -348,3 +348,15 @@ nav .ninjaDialog
 {
   
 }
+
+.submitArea
+{
+  display: flex;
+  flex-direction: row;
+}
+
+.circleProgressWrapper
+{
+  margin:0 0 0 16px;
+}
+

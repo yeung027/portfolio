@@ -1,4 +1,19 @@
 import axios from 'axios'
+import nodemailer from 'nodemailer'
+
+const mailSender = process.env.mailSender;
+
+let transporter = nodemailer.createTransport({
+  service: 'Gmail',
+  auth: {
+    user: mailSender,
+    pass: process.env.mailPasscode,
+  },
+  settings: {
+    defaultFrom: mailSender,
+    defaultReplyTo: mailSender,
+  },
+});
 
 export default async function handler(req, res) 
 {
@@ -18,8 +33,8 @@ export default async function handler(req, res)
   .then(async function (response) {
     await createContactSuccess(res, name, email, message, response);
   })
-  .catch(async function (error) {
-    await createContactError(res, error);
+  .catch(function (error) {
+    createContactError(res, error);
   });
 
   
@@ -32,7 +47,7 @@ async function createContactSuccess(res, name, email, message, response)
 
 }//END createContactSuccess
 
-async function createContactError(res, error) 
+function createContactError(res, error) 
 {
   return res.status(500).json( { 
     error:'Server Error!'
@@ -42,8 +57,34 @@ async function createContactError(res, error)
 async function sendMailToMyself(res, name, email, message, response) 
 {
   
-  return res.status(200).json( { 
-    name:name
+  let html  = "<p>Hey me,</p>";
+  html      += "<p>An new enquiry form <a href='portfolio.hei.ninja'>portfolio.hei.ninja</a>:</p>";
+  html      += "<ul><li><b>From: </b>"+email+"</li>";
+  html      += "<li><b>Message: </b>"+message+"</li>";
+  html      += "</ul>";
+  html      += "<p>thanks me,</p>";
+  html      += "<p>Hei</p>";
+
+  let info = await transporter.sendMail({
+    from: mailSender, // sender address
+    to: mailSender, // list of receivers
+    subject: "An enquiry form portfolio.hei.ninja!!", // Subject line
+    html: html, // html body
   })
+  .then(
+    function (response) {
+      res.status(200).json( { 
+        message:'success to send email'
+      })
+    }
+  ).catch(
+    function (response) {
+      res.status(500).json( { 
+        message:response
+      })
+    }
+  );
+
+  
 
 }//END sendMailToMyself

@@ -87,6 +87,13 @@ html, body
     color:#000 !important;
 }
 
+.button.submitting
+{
+  background-image: linear-gradient(to bottom, #ededed, #c9c9c9, #ededed);
+  color:#8c8b8b !important;
+  cursor: progress;
+}
+
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
