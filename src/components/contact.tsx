@@ -80,7 +80,7 @@ class Contact extends Component<MyProps, MyStates>
 
   submitError(error)
   {
-    console.error(error);
+    //console.error('has error message? '+error.message);
     this.setState({ 
       snackOpen: true,
       snackType: 'error',
