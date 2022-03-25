@@ -192,12 +192,13 @@ class Contact extends Component<MyProps, MyStates>
     var name      = this.nameRef.current ? this.nameRef.current.value : null;
     var email     = this.emailRef.current ? this.emailRef.current.value : null;
     var message   = this.messageRef.current ? this.messageRef.current.value : null;
-
-    axios.post(this.parent.strapiBaseUrl+'/api/portfolio-contacts', {
+    
+    axios.post('/api/contact/submit', {
       data:{name: name, email: email, message: message}
     })
     .then(function (response) {
-      self.submitSuccess(response);
+      console.log(response);
+      //self.submitSuccess(response);
     })
     .catch(function (error) {
       self.submitError(error);
