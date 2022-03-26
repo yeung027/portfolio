@@ -214,8 +214,8 @@ class Contact extends Component<MyProps, MyStates>
       data:{name: name, email: email, message: message}
     })
     .then(function (response) {
-      console.log(response);
-      //self.submitSuccess(response);
+      //console.log(response);
+      self.submitSuccess(response);
     })
     .catch(function (error) {
       self.submitError(error);
@@ -268,13 +268,16 @@ class Contact extends Component<MyProps, MyStates>
 
     let progressEle = null;
     let circleProgressWrapperClass = this.parent.state.isMobile ? mobileStyles.circleProgressWrapper : styles.circleProgressWrapper;
-    if(this.state.submitting)
+    if(this.state.submitting && !this.state.submitSuccess)
       progressEle =   <div className={circleProgressWrapperClass} >
                         <CircularProgress size={25}/>
                       </div>
     
     let submitBtnClass  = 'button';
     if(this.state.submitting) submitBtnClass = [submitBtnClass, 'submitting'].join(' ');
+
+    let submitAreaClass = this.parent.state.isMobile ? mobileStyles.submitArea : styles.submitArea;
+    if(this.state.submitSuccess) submitAreaClass = [submitAreaClass, this.parent.state.isMobile ? mobileStyles.hide : styles.hide].join(' ');
 
     let sendSuccessMessageEle = null;
     if(this.state.submitSuccess)
@@ -339,7 +342,7 @@ class Contact extends Component<MyProps, MyStates>
                     <div className={messageErrorClass}>
                     {this.state.messageErrorMsg}
                     </div>
-                    <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.submitArea : styles.submitArea}>
+                    <div className={submitAreaClass}>
                       <div className={submitBtnClass} onClick={this.sendOnClick}>
                         Send
                       </div>

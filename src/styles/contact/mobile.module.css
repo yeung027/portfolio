@@ -207,6 +207,10 @@ nav .formColumnWrapper
   flex-direction: row;
 }
 
+.submitArea.hide
+{
+  display: none;
+}
 
 .circleProgressWrapper
 {

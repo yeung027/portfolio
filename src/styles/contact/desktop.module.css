@@ -355,6 +355,11 @@ nav .ninjaDialog
   flex-direction: row;
 }
 
+.submitArea.hide
+{
+  display: none;
+}
+
 .circleProgressWrapper
 {
   margin:0 0 0 16px;

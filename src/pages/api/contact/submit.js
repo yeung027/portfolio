@@ -72,6 +72,36 @@ async function sendMailToMyself(res, name, email, message, response)
     html: html, // html body
   })
   .then(
+    async function (response) {
+      await sendMailToEnquirer(res, name, email, message, response);
+    }
+  ).catch(
+    function (response) {
+      res.status(500).json( { 
+        message:response
+      })
+    }
+  );
+}//END sendMailToMyself
+
+async function sendMailToEnquirer(res, name, email, message, response) 
+{
+  
+  let html  = "<p>Hey "+name+",</p>";
+  html      += "<p>Your enquiry on <a href='portfolio.hei.ninja'>portfolio.hei.ninja</a> already send, please waiting for my reply, thanks :)</p>";
+  html      += "<ul>";
+  html      += "<li><b>Message: </b>"+message+"</li>";
+  html      += "</ul>";
+  html      += "<p>thanks,</p>";
+  html      += "<p>Hei Yeung</p>";
+
+  let info = await transporter.sendMail({
+    from: mailSender, // sender address
+    to: email, // list of receivers
+    subject: "Your enquiry on portfolio.hei.ninja", // Subject line
+    html: html, // html body
+  })
+  .then(
     function (response) {
       res.status(200).json( { 
         message:'success to send email'
@@ -84,7 +114,4 @@ async function sendMailToMyself(res, name, email, message, response)
       })
     }
   );
-
-  
-
-}//END sendMailToMyself
+}//END sendMailToEnquirer
