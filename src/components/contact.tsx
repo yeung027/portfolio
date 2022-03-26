@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import styles from '../styles/contact/desktop.module.css'
 import mobileStyles from '../styles/contact/mobile.module.css'
-import Image from 'next/image'
 import Link from 'next/link'
 import axios from 'axios'
 import Snackbar from '@material-ui/core/Snackbar';
@@ -9,6 +8,8 @@ import MuiAlert from '@material-ui/lab/Alert';
 import Slide from '@material-ui/core/Slide';
 import Grow from '@material-ui/core/Grow';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { withStyles } from "@material-ui/core/styles";
+import DoneIcon from '@material-ui/icons/Done';
 
 type MyProps = {
   parent:any
@@ -25,6 +26,7 @@ type MyStates = {
   snackType: any
   snackMsg: string
   submitting: boolean
+  submitSuccess : boolean
 };
 
 interface Contact {
@@ -33,6 +35,11 @@ interface Contact {
   emailRef:any
   messageRef:any
 }
+
+
+const classes = ({
+  
+});
 
 class Contact extends Component<MyProps, MyStates>
 {
@@ -52,6 +59,7 @@ class Contact extends Component<MyProps, MyStates>
       snackType: 'success',
       snackMsg: null,
       submitting: false,
+      submitSuccess: false
     }//END state
     
     this.nameRef = React.createRef();
@@ -77,7 +85,8 @@ class Contact extends Component<MyProps, MyStates>
     this.setState({ 
       snackOpen: true,
       snackType: 'success',
-      snackMsg: 'Message send successly! Thanks for your enquiry!'
+      snackMsg: 'Message send successly! Thanks for your enquiry!',
+      submitSuccess: true
      });
   }//END submitSuccess
 
@@ -267,6 +276,80 @@ class Contact extends Component<MyProps, MyStates>
     let submitBtnClass  = 'button';
     if(this.state.submitting) submitBtnClass = [submitBtnClass, 'submitting'].join(' ');
 
+    let sendSuccessMessageEle = null;
+    if(this.state.submitSuccess)
+    {
+      sendSuccessMessageEle = <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.sendSuccess : styles.sendSuccess}>
+                  <DoneIcon className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.completeIcon : styles.completeIcon} />
+                  <span>Message sent successfully! Thanks for your enquiry!</span>
+                </div>
+    }
+
+    let formEle = <form action="#" method="POST">
+                    {sendSuccessMessageEle}
+                    <div className={nameColumnClass}>
+                      <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.input : styles.input}>
+                        <input 
+                          id="name" 
+                          type="text" 
+                          autoComplete="name" 
+                          ref={this.nameRef} 
+                          placeholder='Name' 
+                          required 
+                          onKeyUp={this.onInputKeyUp} 
+                          readOnly={this.state.submitting}
+                        />
+                      </div>
+                      <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.star : styles.star}>*</div>
+                    </div>
+                    <div className={nameErrorClass}>
+                      {this.state.nameErrorMsg}
+                    </div>
+                    <div className={emailColumnClass}>
+                      <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.input : styles.input}>
+                        <input 
+                          id="email" 
+                          type="text" 
+                          autoComplete="email" 
+                          ref={this.emailRef} 
+                          placeholder='email' 
+                          required 
+                          onKeyUp={this.onInputKeyUp} 
+                          readOnly={this.state.submitting}
+                        />
+                      </div>
+                      <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.star : styles.star}>*</div>
+                    </div>
+                    <div className={emailErrorClass}>
+                    {this.state.emailErrorMsg}
+                    </div>
+                    <div className={messageColumnClass}>
+                      <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.input : styles.input}>
+                        <textarea 
+                          id="message" 
+                          ref={this.messageRef} 
+                          placeholder='Message' 
+                          required 
+                          onKeyUp={this.onInputKeyUp} 
+                          readOnly={this.state.submitting}
+                        />
+                      </div>
+                      <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.star : styles.star}>*</div>
+                    </div>
+                    <div className={messageErrorClass}>
+                    {this.state.messageErrorMsg}
+                    </div>
+                    <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.submitArea : styles.submitArea}>
+                      <div className={submitBtnClass} onClick={this.sendOnClick}>
+                        Send
+                      </div>
+                      {progressEle}
+                    </div>
+                  </form>
+    //End formEle
+    
+
+
     return  <section className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.container : styles.container}
               id='contact'
             >
@@ -346,66 +429,7 @@ class Contact extends Component<MyProps, MyStates>
                       </div>
                       <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.row4M : styles.row4M}>
                         <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.formWrapper : styles.formWrapper}>
-                          <form action="#" method="POST">
-                            <div className={nameColumnClass}>
-                              <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.input : styles.input}>
-                                <input 
-                                  id="name" 
-                                  type="text" 
-                                  autoComplete="name" 
-                                  ref={this.nameRef} 
-                                  placeholder='Name' 
-                                  required 
-                                  onKeyUp={this.onInputKeyUp} 
-                                  readOnly={this.state.submitting}
-                                />
-                              </div>
-                              <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.star : styles.star}>*</div>
-                            </div>
-                            <div className={nameErrorClass}>
-                              {this.state.nameErrorMsg}
-                            </div>
-                            <div className={emailColumnClass}>
-                              <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.input : styles.input}>
-                                <input 
-                                  id="email" 
-                                  type="text" 
-                                  autoComplete="email" 
-                                  ref={this.emailRef} 
-                                  placeholder='email' 
-                                  required 
-                                  onKeyUp={this.onInputKeyUp} 
-                                  readOnly={this.state.submitting}
-                                />
-                              </div>
-                              <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.star : styles.star}>*</div>
-                            </div>
-                            <div className={emailErrorClass}>
-                            {this.state.emailErrorMsg}
-                            </div>
-                            <div className={messageColumnClass}>
-                              <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.input : styles.input}>
-                                <textarea 
-                                  id="message" 
-                                  ref={this.messageRef} 
-                                  placeholder='Message' 
-                                  required 
-                                  onKeyUp={this.onInputKeyUp} 
-                                  readOnly={this.state.submitting}
-                                />
-                              </div>
-                              <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.star : styles.star}>*</div>
-                            </div>
-                            <div className={messageErrorClass}>
-                            {this.state.messageErrorMsg}
-                            </div>
-                            <div className={this.parent.state.isMobile || this.parent.state.isTablet ? mobileStyles.submitArea : styles.submitArea}>
-                              <div className={submitBtnClass} onClick={this.sendOnClick}>
-                                Send
-                              </div>
-                              {progressEle}
-                            </div>
-                          </form>
+                          {formEle}
                         </div>
                       </div>
                       <div 
@@ -431,3 +455,4 @@ class Contact extends Component<MyProps, MyStates>
 
 
 export default Contact;
+//export default withStyles(classes, { withTheme: true })(Contact);

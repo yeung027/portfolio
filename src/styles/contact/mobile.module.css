@@ -213,3 +213,28 @@ nav .formColumnWrapper
   display: inline-flex;
   margin:0 0 0 16px;
 }
+
+.sendSuccess
+{
+  line-height: 20px;
+  display: flex;
+  flex-direction: row;
+  margin:0 0 10px 0;
+  align-items: center;
+}
+
+.sendSuccess span
+{
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  line-height: 20px;
+  color:#798197;
+  font-weight: 500;
+  padding:10px 7px 0 5px;
+}
+
+.completeIcon
+{
+  color:#23f514;
+  line-height: 60px;
+}

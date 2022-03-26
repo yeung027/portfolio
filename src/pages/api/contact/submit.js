@@ -58,7 +58,7 @@ async function sendMailToMyself(res, name, email, message, response)
 {
   
   let html  = "<p>Hey me,</p>";
-  html      += "<p>An new enquiry form <a href='portfolio.hei.ninja'>portfolio.hei.ninja</a>:</p>";
+  html      += "<p>An new enquiry from <a href='portfolio.hei.ninja'>portfolio.hei.ninja</a>:</p>";
   html      += "<ul><li><b>From: </b>"+email+"</li>";
   html      += "<li><b>Message: </b>"+message+"</li>";
   html      += "</ul>";
