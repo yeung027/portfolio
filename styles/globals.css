@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --inter-font: 'PT Serif';
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  font-family: var(--inter-font);
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: #EDEDED;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@layer components {
+  .test1 
+  {
+    @apply border-[2px] border-red-600;
+  }
+  .test2
+  {
+    @apply border-[2px] border-blue-600;
+  }
+  .test3
+  {
+    @apply border-[2px] border-yellow-500;
+  }
+  .test4
+  {
+    @apply border-[2px] border-black;
+  }
+  .test5
+  {
+    @apply border-[3px] border-green-500;
+  }
+  .test6
+  {
+    @apply border-[3px] border-purple-500;
+  }
+  .test7
+  {
+    @apply border-[3px] border-gray-500;
+  }
+}
+

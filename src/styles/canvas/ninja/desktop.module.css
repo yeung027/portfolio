@@ -1,7 +1,0 @@
-.canvas
-{
-  width:271px !important;
-  height:271px !important;
-  clip-path: circle(50% at 50% 50%)!important;
-  background-image: linear-gradient(135deg, rgba(248, 164, 71, 1) 0%, rgba(251, 208, 111, 1) 51%, rgba(250, 193, 87, 1) 100%);
-}
