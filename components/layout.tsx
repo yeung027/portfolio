@@ -2,6 +2,7 @@ import Head from 'next/head'
 
 
 import { Inter } from '@next/font/google'
+import Top from './top'
 const inter = Inter({
     variable: '--inter-font',
   })
@@ -19,8 +20,9 @@ export default function Layout(props:any)
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="icon" href="/icos/favicon.ico" />
           </Head>
+          <Top />
           <main 
-            className={`z-[10] ${inter.variable}`}
+            className={`z-[10] ${inter.variable} mt-[106px] desktop:mt-[148px]`}
           >
             {props.children}
             <div 
