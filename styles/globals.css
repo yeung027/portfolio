@@ -53,5 +53,20 @@ a {
   {
     @apply border-[3px] border-gray-500;
   }
+
+  .waves-bg-mobile, .waves-bg
+  {
+    @apply top-0 z-[20] fixed w-screen h-screen bg-fixed bg-repeat-y;
+    background-size: cover;
+    background-position: center;
+  }
+  .waves-bg-mobile
+  {
+    background-image: url('/images/waves-mobile.svg');
+  }
+  .waves-bg
+  {
+    background-image: url('/images/waves.svg');
+  }
 }
 
