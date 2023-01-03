@@ -1,0 +1,16 @@
+{
+    "translations": {
+        "en_US": {
+            "home": "Home",
+            "skills": "Skills",
+            "portfolio": "Portfolio",
+            "contact": "Contact"
+        },
+        "zh-hk": {
+            "home": "主頁",
+            "skills": "技能",
+            "portfolio": "履歷",
+            "contact": "聯絡"
+        }
+    }
+}

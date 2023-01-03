@@ -54,6 +54,11 @@ a {
     @apply border-[3px] border-gray-500;
   }
 
+  .center
+  {
+    @apply justify-center items-center
+  }
+
   .waves-bg-mobile, .waves-bg
   {
     @apply top-0 z-[20] fixed w-screen h-screen bg-fixed bg-repeat-y;
@@ -70,3 +75,13 @@ a {
   }
 }
 
+.nav
+{
+  font-family: var(--inter-font);
+  @apply flex ml-[5vw] text-[#757575]
+}
+
+.nav span
+{
+  @apply flex px-[2vw] h-full
+}
